@@ -28,7 +28,6 @@ class Standards(define_object.DefineObject):
         :param standard: Standards define-template dictionary section
         :return: odmlib Standard template
         """
-        # TODO should the OID be an expected part of the standards content? Or, generated?
         if "OID" not in standard:
             oid = self.generate_oid(["ST", str(number)])
         else:
