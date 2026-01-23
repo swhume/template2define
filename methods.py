@@ -28,14 +28,14 @@ class Methods(define_object.DefineObject):
         :param method: Methods define-template dictionary section
         :return: a MethodDef odmlib template
         """
-        attr = {"OID": method["OID"], "Name": method["Name"], "Type": method["Type"]}
+        attr = {"OID": method["OID"], "Name": method["name"], "Type": method["type"]}
         methoddef = DEFINE.MethodDef(**attr)
-        tt = DEFINE.TranslatedText(_content=method["Description"], lang=self.lang)
+        tt = DEFINE.TranslatedText(_content=method["description"], lang=self.lang)
         methoddef.Description = DEFINE.Description()
         methoddef.Description.TranslatedText.append(tt)
-        if methoddef.get("Expression Context"):
-            methoddef.FormalExpression.append(DEFINE.FormalExpression(Context=method["Expression Context"], _content=row["Expression Code"]))
-        if method.get("Document"):
+        if method.get("context"):
+            methoddef.FormalExpression.append(DEFINE.FormalExpression(Context=method["context"], _content=method["code"]))
+        if method.get("document"):
             self._add_document(method, methoddef)
         return method
 
@@ -45,7 +45,7 @@ class Methods(define_object.DefineObject):
         :param method: Methods section in the define-template dictionary
         :param methoddef: odmlib MethodDef template that gets updated with a DocumentRef template
         """
-        dr = DEFINE.DocumentRef(leafID=method["Document"])
-        pdf = DEFINE.PDFPageRef(PageRefs=method["Pages"], Type="NamedDestination")
+        dr = DEFINE.DocumentRef(leafID=method["document"])
+        pdf = DEFINE.PDFPageRef(PageRefs=method["pages"], Type="namedDestination")
         dr.PDFPageRef.append(pdf)
         methoddef.DocumentRef.append(dr)

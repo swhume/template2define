@@ -1,9 +1,9 @@
 from odmlib.define_2_1 import model as DEFINE
 import define_object
-import ValueLevel as VL
+import valueLevel as VL
 
 
-class Variables(define_object.DefineObject):
+class Items(define_object.DefineObject):
     """ create a Define-XML v2.1 ItemDef element objects """
     def __init__(self):
         super().__init__()
