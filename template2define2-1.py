@@ -1,21 +1,29 @@
 import argparse
+import json
+from pathlib import Path
 import odm as ODM
 import supporting_docs as SD
 import os.path
-import Study, Standards, Datasets, Variables, ValueLevel
-import WhereClauses, CodeLists, Dictionaries, Methods, Comments, Documents
+from validate import DefineSchemaValidator, DefineSchemaValidationError
+import study, standards, itemGroups, itemRefs, items, conditions, standards, annotatedCRF, concepts, conceptProperties
+import whereClauses, codeLists, Dictionaries, methods, Comments, Documents, valueLevel
 
 ELEMENTS = ["ValueListDef", "WhereClauseDef", "ItemGroupDef", "ItemDef", "CodeList", "MethodDef", "CommentDef", "leaf"]
 
 """
-template2define2-1.py - convert a define-template.json file into a Define-XML v2.1 file.
+template2define2-1.py - convert a define-360i.json file into a Define-XML v2.1 file.
 Example Cmd-line Args:
-    example: -t ./data/Define-Template.json -d ./data/define-360i.xml
+    example: -t ./data/define-360i.json -d ./data/define-360i.xml
 
 Example CLI validation:
 xmllint --schema /home/sam/src/schemas/DefineV219/schema/cdisc-define-2.1/define2-1-0.xsd ./data/define-360i.xml --noout
+
+Example XML Pretty Print:
+xmllint --format ./data/define-360i.xml | less
 """
 
+# TODO template comments
+# "asOfDateTime": null - should exclude attributes with null values
 
 class Template2Define:
     """ Generate a Define-XML v2.1 file from the define-template.json file. """
@@ -30,6 +38,7 @@ class Template2Define:
         self._check_file_existence()
         self.lang = "en"
         self.acrf = "LF.acrf"
+        self.define_attributes = {}
         self.define_objects = {}
 
     def create(self):
@@ -37,11 +46,16 @@ class Template2Define:
         public method to create the Define-XML v2.1 file from the template input file
         """
         with open(self.template_file, 'r') as f:
-            template_objects = eval(f.read())
+            template_objects = json.load(f)
         self._init_define_objects()
+        self._load_study(template_objects)
         for section, object in template_objects.items():
-            print(section)
-            self._load(section, object)
+            if type(object) is list:
+                print(section)
+                self._load(section, object)
+            else:
+                self.define_attributes[section] = object
+
         odm = self._build_doc()
         self._write_define(odm)
 
@@ -50,8 +64,12 @@ class Template2Define:
             self.define_objects[elem] = []
 
     def _load(self, section, object):
-        loader = eval(section + "." + section + "()")
+        loader = eval(section + "." + section[0].upper() + section[1:] + "()")
         loader.create_define_objects(object, self.define_objects, self.lang, self.acrf)
+
+    def _load_study(self, template):
+        loader = study.Study()
+        loader.create_define_objects(template, self.define_objects, self.lang, self.acrf)
 
     def _build_doc(self):
         """
@@ -65,8 +83,11 @@ class Template2Define:
         odm.Study.MetaDataVersion.Standards = self.define_objects["Standards"]
         supp_docs = SD.SupportingDocuments()
         odm.Study.MetaDataVersion.AnnotatedCRF = supp_docs.create_annotatedcrf(self.acrf)
-        if "leaf" in self.define_objects and len(self.define_objects["leaf"]) > 0:
-            odm.Study.MetaDataVersion.SupplementalDoc = supp_docs.create_supplementaldoc(self.acrf, self.define_objects["leaf"])
+        # create leaf object for aCRF as there are no documents in template
+        self.define_objects["leaf"].append(supp_docs.create_leaf_object(leaf_id="LF.acrf", href="acrf.pdf", title="Annotated CRF"))
+        # TODO no supplemental docs in template
+        # if "leaf" in self.define_objects and len(self.define_objects["leaf"]) > 0:
+        #     odm.Study.MetaDataVersion.SupplementalDoc = supp_docs.create_supplementaldoc(self.acrf, self.define_objects["leaf"])
         for elem in ELEMENTS:
             self._load_elements(odm, elem)
         return odm
@@ -93,6 +114,15 @@ class Template2Define:
         if not os.path.isfile(self.template_file):
             raise ValueError("The template file specified on the command-line cannot be found.")
 
+def validate_defile_file(define_file):
+    validator = DefineSchemaValidator(Path(define_file))
+    try:
+        validator.validate_define_file()
+    except DefineSchemaValidationError as e:
+        print(f"Define-XML schema validation errors: {e}")
+    else:
+        print("Define-XML file is valid.")
+
 def set_cmd_line_args():
     """
     get the command-line arguments needed to convert the define-template.json input file into Define-XML 2.1 file
@@ -100,11 +130,13 @@ def set_cmd_line_args():
     """
     parser = argparse.ArgumentParser()
     parser.add_argument("-d", "--define", help="path and file name of Define-XML v2 file to create", required=False,
-                        dest="define_file", default="./odmlib-define-xml.xml")
+                        dest="define_file", default="./data/define-360i.xml")
     parser.add_argument("-t", "--template", help="path and file name of the template file to load", required=True,
                         dest="template_file", )
     parser.add_argument("-v", "--verbose", help="turn on verbose processing", default=False, const=True,
                         nargs='?', dest="is_verbose")
+    parser.add_argument("-s", "--validate", help="schema validate the define.xml", default=False, const=True,
+                        nargs='?', dest="is_validate")
     args = parser.parse_args()
     return args
 
@@ -114,6 +146,9 @@ def main():
     args = set_cmd_line_args()
     x2d = Template2Define(template_file=args.template_file, define_file=args.define_file, is_verbose=args.is_verbose)
     x2d.create()
+    if args.is_validate:
+        validate_defile_file(args.define_file)
+
 
 if __name__ == "__main__":
     main()
