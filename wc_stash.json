@@ -1,0 +1,2163 @@
+[
+    {
+        "COND.SC.SCTESTCD.78088212": {
+            "OID": "COND.SC.SCTESTCD.78088212",
+            "RangeCheck": [
+                {
+                    "SoftHard": "Soft",
+                    "ItemOID": "IT.SC.SCTESTCD",
+                    "Comparator": "EQ",
+                    "CheckValue": [
+                        "EDULEVEL"
+                    ]
+                }
+            ]
+        }
+    },
+    {
+        "COND.SC.SCTESTCD.7cb4808a": {
+            "OID": "COND.SC.SCTESTCD.7cb4808a",
+            "RangeCheck": [
+                {
+                    "SoftHard": "Soft",
+                    "ItemOID": "IT.SC.SCTESTCD",
+                    "Comparator": "EQ",
+                    "CheckValue": [
+                        "EDUYRNUM"
+                    ]
+                }
+            ]
+        }
+    },
+    {
+        "COND.VS.VSTESTCD.3cd24c45": {
+            "OID": "COND.VS.VSTESTCD.3cd24c45",
+            "RangeCheck": [
+                {
+                    "SoftHard": "Soft",
+                    "ItemOID": "IT.VS.VSTESTCD",
+                    "Comparator": "EQ",
+                    "CheckValue": [
+                        "TEMP"
+                    ]
+                }
+            ]
+        }
+    },
+    {
+        "COND.VS.VSLOC.e14ab3ef": {
+            "OID": "COND.VS.VSLOC.e14ab3ef",
+            "RangeCheck": [
+                {
+                    "SoftHard": "Soft",
+                    "ItemOID": "IT.VS.VSLOC",
+                    "Comparator": "IN",
+                    "CheckValue": [
+                        "AXILLA",
+                        "EAR",
+                        "FOREHEAD",
+                        "ORAL CAVITY",
+                        "RECTUM"
+                    ]
+                }
+            ]
+        }
+    },
+    {
+        "COND.VS.VSTESTCD.3065ea60": {
+            "OID": "COND.VS.VSTESTCD.3065ea60",
+            "RangeCheck": [
+                {
+                    "SoftHard": "Soft",
+                    "ItemOID": "IT.VS.VSTESTCD",
+                    "Comparator": "EQ",
+                    "CheckValue": [
+                        "WEIGHT"
+                    ]
+                }
+            ]
+        }
+    },
+    {
+        "COND.VS.VSTESTCD.9c8495d2": {
+            "OID": "COND.VS.VSTESTCD.9c8495d2",
+            "RangeCheck": [
+                {
+                    "SoftHard": "Soft",
+                    "ItemOID": "IT.VS.VSTESTCD",
+                    "Comparator": "EQ",
+                    "CheckValue": [
+                        "HEIGHT"
+                    ]
+                }
+            ]
+        }
+    },
+    {
+        "COND.VS.VSTESTCD.903f5a52": {
+            "OID": "COND.VS.VSTESTCD.903f5a52",
+            "RangeCheck": [
+                {
+                    "SoftHard": "Soft",
+                    "ItemOID": "IT.VS.VSTESTCD",
+                    "Comparator": "EQ",
+                    "CheckValue": [
+                        "PULSE"
+                    ]
+                }
+            ]
+        }
+    },
+    {
+        "COND.VS.VSPOS.24ef7406": {
+            "OID": "COND.VS.VSPOS.24ef7406",
+            "RangeCheck": [
+                {
+                    "SoftHard": "Soft",
+                    "ItemOID": "IT.VS.VSPOS",
+                    "Comparator": "IN",
+                    "CheckValue": [
+                        "PRONE",
+                        "SEMI-RECUMBENT",
+                        "SITTING",
+                        "STANDING",
+                        "SUPINE"
+                    ]
+                }
+            ]
+        }
+    },
+    {
+        "COND.VS.VSLOC.9b0f4929": {
+            "OID": "COND.VS.VSLOC.9b0f4929",
+            "RangeCheck": [
+                {
+                    "SoftHard": "Soft",
+                    "ItemOID": "IT.VS.VSLOC",
+                    "Comparator": "IN",
+                    "CheckValue": [
+                        "BRACHIAL ARTERY",
+                        "CAROTID ARTERY",
+                        "CEREBRAL ARTERY",
+                        "DORSALIS PEDIS ARTERY",
+                        "FEMORAL ARTERY",
+                        "RADIAL ARTERY"
+                    ]
+                }
+            ]
+        }
+    },
+    {
+        "COND.VS.VSLAT.934ef850": {
+            "OID": "COND.VS.VSLAT.934ef850",
+            "RangeCheck": [
+                {
+                    "SoftHard": "Soft",
+                    "ItemOID": "IT.VS.VSLAT",
+                    "Comparator": "IN",
+                    "CheckValue": [
+                        "LEFT",
+                        "RIGHT"
+                    ]
+                }
+            ]
+        }
+    },
+    {
+        "COND.VS.VSTESTCD.4d709ea4": {
+            "OID": "COND.VS.VSTESTCD.4d709ea4",
+            "RangeCheck": [
+                {
+                    "SoftHard": "Soft",
+                    "ItemOID": "IT.VS.VSTESTCD",
+                    "Comparator": "EQ",
+                    "CheckValue": [
+                        "RESP"
+                    ]
+                }
+            ]
+        }
+    },
+    {
+        "COND.VS.VSTESTCD.7ca006e0": {
+            "OID": "COND.VS.VSTESTCD.7ca006e0",
+            "RangeCheck": [
+                {
+                    "SoftHard": "Soft",
+                    "ItemOID": "IT.VS.VSTESTCD",
+                    "Comparator": "EQ",
+                    "CheckValue": [
+                        "BMI"
+                    ]
+                }
+            ]
+        }
+    },
+    {
+        "COND.VS.VSTESTCD.6f8a5002": {
+            "OID": "COND.VS.VSTESTCD.6f8a5002",
+            "RangeCheck": [
+                {
+                    "SoftHard": "Soft",
+                    "ItemOID": "IT.VS.VSTESTCD",
+                    "Comparator": "EQ",
+                    "CheckValue": [
+                        "SYSBP"
+                    ]
+                }
+            ]
+        }
+    },
+    {
+        "COND.VS.VSLOC.7c8b8031": {
+            "OID": "COND.VS.VSLOC.7c8b8031",
+            "RangeCheck": [
+                {
+                    "SoftHard": "Soft",
+                    "ItemOID": "IT.VS.VSLOC",
+                    "Comparator": "IN",
+                    "CheckValue": [
+                        "BRACHIAL ARTERY",
+                        "CAROTID ARTERY",
+                        "DORSALIS PEDIS ARTERY",
+                        "FEMORAL ARTERY",
+                        "FINGER",
+                        "RADIAL ARTERY"
+                    ]
+                }
+            ]
+        }
+    },
+    {
+        "COND.VS.VSTESTCD.04e7c99e": {
+            "OID": "COND.VS.VSTESTCD.04e7c99e",
+            "RangeCheck": [
+                {
+                    "SoftHard": "Soft",
+                    "ItemOID": "IT.VS.VSTESTCD",
+                    "Comparator": "EQ",
+                    "CheckValue": [
+                        "DIABP"
+                    ]
+                }
+            ]
+        }
+    },
+    {
+        "COND.VS.VSTESTCD.34f13e1b": {
+            "OID": "COND.VS.VSTESTCD.34f13e1b",
+            "RangeCheck": [
+                {
+                    "SoftHard": "Soft",
+                    "ItemOID": "IT.VS.VSTESTCD",
+                    "Comparator": "EQ",
+                    "CheckValue": [
+                        "HR"
+                    ]
+                }
+            ]
+        }
+    },
+    {
+        "COND.EG.EGTESTCD.ebac683e": {
+            "OID": "COND.EG.EGTESTCD.ebac683e",
+            "RangeCheck": [
+                {
+                    "SoftHard": "Soft",
+                    "ItemOID": "IT.EG.EGTESTCD",
+                    "Comparator": "EQ",
+                    "CheckValue": [
+                        "INTP"
+                    ]
+                }
+            ]
+        }
+    },
+    {
+        "COND.EG.EGEVAL.6c228d92": {
+            "OID": "COND.EG.EGEVAL.6c228d92",
+            "RangeCheck": [
+                {
+                    "SoftHard": "Soft",
+                    "ItemOID": "IT.EG.EGEVAL",
+                    "Comparator": "IN",
+                    "CheckValue": [
+                        "ADJUDICATION COMMITTEE",
+                        "INDEPENDENT ASSESSOR",
+                        "INVESTIGATOR",
+                        "VENDOR"
+                    ]
+                }
+            ]
+        }
+    },
+    {
+        "COND.EG.EGTESTCD.814eb2d7": {
+            "OID": "COND.EG.EGTESTCD.814eb2d7",
+            "RangeCheck": [
+                {
+                    "SoftHard": "Soft",
+                    "ItemOID": "IT.EG.EGTESTCD",
+                    "Comparator": "EQ",
+                    "CheckValue": [
+                        "AVCOND"
+                    ]
+                }
+            ]
+        }
+    },
+    {
+        "COND.EG.EGTESTCD.75ce255c": {
+            "OID": "COND.EG.EGTESTCD.75ce255c",
+            "RangeCheck": [
+                {
+                    "SoftHard": "Soft",
+                    "ItemOID": "IT.EG.EGTESTCD",
+                    "Comparator": "EQ",
+                    "CheckValue": [
+                        "AXISVOLT"
+                    ]
+                }
+            ]
+        }
+    },
+    {
+        "COND.EG.EGTESTCD.b1863809": {
+            "OID": "COND.EG.EGTESTCD.b1863809",
+            "RangeCheck": [
+                {
+                    "SoftHard": "Soft",
+                    "ItemOID": "IT.EG.EGTESTCD",
+                    "Comparator": "EQ",
+                    "CheckValue": [
+                        "CHYPTENL"
+                    ]
+                }
+            ]
+        }
+    },
+    {
+        "COND.EG.EGTESTCD.1eae990e": {
+            "OID": "COND.EG.EGTESTCD.1eae990e",
+            "RangeCheck": [
+                {
+                    "SoftHard": "Soft",
+                    "ItemOID": "IT.EG.EGTESTCD",
+                    "Comparator": "EQ",
+                    "CheckValue": [
+                        "TECHQUAL"
+                    ]
+                }
+            ]
+        }
+    },
+    {
+        "COND.EG.EGTESTCD.976a645a": {
+            "OID": "COND.EG.EGTESTCD.976a645a",
+            "RangeCheck": [
+                {
+                    "SoftHard": "Soft",
+                    "ItemOID": "IT.EG.EGTESTCD",
+                    "Comparator": "EQ",
+                    "CheckValue": [
+                        "IVTIACD"
+                    ]
+                }
+            ]
+        }
+    },
+    {
+        "COND.EG.EGTESTCD.30a97f6d": {
+            "OID": "COND.EG.EGTESTCD.30a97f6d",
+            "RangeCheck": [
+                {
+                    "SoftHard": "Soft",
+                    "ItemOID": "IT.EG.EGTESTCD",
+                    "Comparator": "EQ",
+                    "CheckValue": [
+                        "PACEMAKR"
+                    ]
+                }
+            ]
+        }
+    },
+    {
+        "COND.EG.EGTESTCD.d5fe4df0": {
+            "OID": "COND.EG.EGTESTCD.d5fe4df0",
+            "RangeCheck": [
+                {
+                    "SoftHard": "Soft",
+                    "ItemOID": "IT.EG.EGTESTCD",
+                    "Comparator": "EQ",
+                    "CheckValue": [
+                        "RHYNOS"
+                    ]
+                }
+            ]
+        }
+    },
+    {
+        "COND.EG.EGTESTCD.4f569105": {
+            "OID": "COND.EG.EGTESTCD.4f569105",
+            "RangeCheck": [
+                {
+                    "SoftHard": "Soft",
+                    "ItemOID": "IT.EG.EGTESTCD",
+                    "Comparator": "EQ",
+                    "CheckValue": [
+                        "SNRARRY"
+                    ]
+                }
+            ]
+        }
+    },
+    {
+        "COND.EG.EGTESTCD.2109c5fb": {
+            "OID": "COND.EG.EGTESTCD.2109c5fb",
+            "RangeCheck": [
+                {
+                    "SoftHard": "Soft",
+                    "ItemOID": "IT.EG.EGTESTCD",
+                    "Comparator": "EQ",
+                    "CheckValue": [
+                        "SPRARRY"
+                    ]
+                }
+            ]
+        }
+    },
+    {
+        "COND.EG.EGTESTCD.d1c2c091": {
+            "OID": "COND.EG.EGTESTCD.d1c2c091",
+            "RangeCheck": [
+                {
+                    "SoftHard": "Soft",
+                    "ItemOID": "IT.EG.EGTESTCD",
+                    "Comparator": "EQ",
+                    "CheckValue": [
+                        "SPRTARRY"
+                    ]
+                }
+            ]
+        }
+    },
+    {
+        "COND.EG.EGTESTCD.07c67769": {
+            "OID": "COND.EG.EGTESTCD.07c67769",
+            "RangeCheck": [
+                {
+                    "SoftHard": "Soft",
+                    "ItemOID": "IT.EG.EGTESTCD",
+                    "Comparator": "EQ",
+                    "CheckValue": [
+                        "VTARRY"
+                    ]
+                }
+            ]
+        }
+    },
+    {
+        "COND.EG.EGTESTCD.35652981": {
+            "OID": "COND.EG.EGTESTCD.35652981",
+            "RangeCheck": [
+                {
+                    "SoftHard": "Soft",
+                    "ItemOID": "IT.EG.EGTESTCD",
+                    "Comparator": "EQ",
+                    "CheckValue": [
+                        "VTTARRY"
+                    ]
+                }
+            ]
+        }
+    },
+    {
+        "COND.EG.EGTESTCD.5442d393": {
+            "OID": "COND.EG.EGTESTCD.5442d393",
+            "RangeCheck": [
+                {
+                    "SoftHard": "Soft",
+                    "ItemOID": "IT.EG.EGTESTCD",
+                    "Comparator": "EQ",
+                    "CheckValue": [
+                        "PRAG"
+                    ]
+                }
+            ]
+        }
+    },
+    {
+        "COND.EG.EGTESTCD.959d4d44": {
+            "OID": "COND.EG.EGTESTCD.959d4d44",
+            "RangeCheck": [
+                {
+                    "SoftHard": "Soft",
+                    "ItemOID": "IT.EG.EGTESTCD",
+                    "Comparator": "EQ",
+                    "CheckValue": [
+                        "QRSAG"
+                    ]
+                }
+            ]
+        }
+    },
+    {
+        "COND.EG.EGTESTCD.6da05656": {
+            "OID": "COND.EG.EGTESTCD.6da05656",
+            "RangeCheck": [
+                {
+                    "SoftHard": "Soft",
+                    "ItemOID": "IT.EG.EGTESTCD",
+                    "Comparator": "EQ",
+                    "CheckValue": [
+                        "QTAG"
+                    ]
+                }
+            ]
+        }
+    },
+    {
+        "COND.EG.EGTESTCD.920155f1": {
+            "OID": "COND.EG.EGTESTCD.920155f1",
+            "RangeCheck": [
+                {
+                    "SoftHard": "Soft",
+                    "ItemOID": "IT.EG.EGTESTCD",
+                    "Comparator": "EQ",
+                    "CheckValue": [
+                        "QTCBAG"
+                    ]
+                }
+            ]
+        }
+    },
+    {
+        "COND.EG.EGTESTCD.aaf0d406": {
+            "OID": "COND.EG.EGTESTCD.aaf0d406",
+            "RangeCheck": [
+                {
+                    "SoftHard": "Soft",
+                    "ItemOID": "IT.EG.EGTESTCD",
+                    "Comparator": "EQ",
+                    "CheckValue": [
+                        "QTCFAG"
+                    ]
+                }
+            ]
+        }
+    },
+    {
+        "COND.EG.EGTESTCD.ba1daa9c": {
+            "OID": "COND.EG.EGTESTCD.ba1daa9c",
+            "RangeCheck": [
+                {
+                    "SoftHard": "Soft",
+                    "ItemOID": "IT.EG.EGTESTCD",
+                    "Comparator": "EQ",
+                    "CheckValue": [
+                        "RRAG"
+                    ]
+                }
+            ]
+        }
+    },
+    {
+        "COND.EG.EGTESTCD.5a654be1": {
+            "OID": "COND.EG.EGTESTCD.5a654be1",
+            "RangeCheck": [
+                {
+                    "SoftHard": "Soft",
+                    "ItemOID": "IT.EG.EGTESTCD",
+                    "Comparator": "EQ",
+                    "CheckValue": [
+                        "EGHRMN"
+                    ]
+                }
+            ]
+        }
+    },
+    {
+        "COND.EG.EGTESTCD.a8fd8ff9": {
+            "OID": "COND.EG.EGTESTCD.a8fd8ff9",
+            "RangeCheck": [
+                {
+                    "SoftHard": "Soft",
+                    "ItemOID": "IT.EG.EGTESTCD",
+                    "Comparator": "EQ",
+                    "CheckValue": [
+                        "QRS_AXIS"
+                    ]
+                }
+            ]
+        }
+    },
+    {
+        "COND.LB.LBTESTCD.04aa6f0c": {
+            "OID": "COND.LB.LBTESTCD.04aa6f0c",
+            "RangeCheck": [
+                {
+                    "SoftHard": "Soft",
+                    "ItemOID": "IT.LB.LBTESTCD",
+                    "Comparator": "EQ",
+                    "CheckValue": [
+                        "HGB"
+                    ]
+                }
+            ]
+        }
+    },
+    {
+        "COND.LB.LBSPEC.f6f6df0c": {
+            "OID": "COND.LB.LBSPEC.f6f6df0c",
+            "RangeCheck": [
+                {
+                    "SoftHard": "Soft",
+                    "ItemOID": "IT.LB.LBSPEC",
+                    "Comparator": "EQ",
+                    "CheckValue": [
+                        "BLOOD"
+                    ]
+                }
+            ]
+        }
+    },
+    {
+        "COND.LB.LBMETHOD.ac001fcd": {
+            "OID": "COND.LB.LBMETHOD.ac001fcd",
+            "RangeCheck": [
+                {
+                    "SoftHard": "Soft",
+                    "ItemOID": "IT.LB.LBMETHOD",
+                    "Comparator": "EQ",
+                    "CheckValue": [
+                        "DIPSTICK MEASUREMENT METHOD"
+                    ]
+                }
+            ]
+        }
+    },
+    {
+        "COND.LB.LBTESTCD.2596a002": {
+            "OID": "COND.LB.LBTESTCD.2596a002",
+            "RangeCheck": [
+                {
+                    "SoftHard": "Soft",
+                    "ItemOID": "IT.LB.LBTESTCD",
+                    "Comparator": "EQ",
+                    "CheckValue": [
+                        "HCT"
+                    ]
+                }
+            ]
+        }
+    },
+    {
+        "COND.LB.LBTESTCD.f0b51e31": {
+            "OID": "COND.LB.LBTESTCD.f0b51e31",
+            "RangeCheck": [
+                {
+                    "SoftHard": "Soft",
+                    "ItemOID": "IT.LB.LBTESTCD",
+                    "Comparator": "EQ",
+                    "CheckValue": [
+                        "RBC"
+                    ]
+                }
+            ]
+        }
+    },
+    {
+        "COND.LB.LBTESTCD.ca27fffa": {
+            "OID": "COND.LB.LBTESTCD.ca27fffa",
+            "RangeCheck": [
+                {
+                    "SoftHard": "Soft",
+                    "ItemOID": "IT.LB.LBTESTCD",
+                    "Comparator": "EQ",
+                    "CheckValue": [
+                        "MCH"
+                    ]
+                }
+            ]
+        }
+    },
+    {
+        "COND.LB.LBSPEC.d1bfd10c": {
+            "OID": "COND.LB.LBSPEC.d1bfd10c",
+            "RangeCheck": [
+                {
+                    "SoftHard": "Soft",
+                    "ItemOID": "IT.LB.LBSPEC",
+                    "Comparator": "EQ",
+                    "CheckValue": [
+                        "ERYTHROCYTES"
+                    ]
+                }
+            ]
+        }
+    },
+    {
+        "COND.LB.LBTESTCD.e647bee9": {
+            "OID": "COND.LB.LBTESTCD.e647bee9",
+            "RangeCheck": [
+                {
+                    "SoftHard": "Soft",
+                    "ItemOID": "IT.LB.LBTESTCD",
+                    "Comparator": "EQ",
+                    "CheckValue": [
+                        "MCHC"
+                    ]
+                }
+            ]
+        }
+    },
+    {
+        "COND.LB.LBTESTCD.347788eb": {
+            "OID": "COND.LB.LBTESTCD.347788eb",
+            "RangeCheck": [
+                {
+                    "SoftHard": "Soft",
+                    "ItemOID": "IT.LB.LBTESTCD",
+                    "Comparator": "EQ",
+                    "CheckValue": [
+                        "MCV"
+                    ]
+                }
+            ]
+        }
+    },
+    {
+        "COND.LB.LBTESTCD.d093221c": {
+            "OID": "COND.LB.LBTESTCD.d093221c",
+            "RangeCheck": [
+                {
+                    "SoftHard": "Soft",
+                    "ItemOID": "IT.LB.LBTESTCD",
+                    "Comparator": "EQ",
+                    "CheckValue": [
+                        "WBC"
+                    ]
+                }
+            ]
+        }
+    },
+    {
+        "COND.LB.LBTESTCD.d7f9d982": {
+            "OID": "COND.LB.LBTESTCD.d7f9d982",
+            "RangeCheck": [
+                {
+                    "SoftHard": "Soft",
+                    "ItemOID": "IT.LB.LBTESTCD",
+                    "Comparator": "EQ",
+                    "CheckValue": [
+                        "NEUTSG"
+                    ]
+                }
+            ]
+        }
+    },
+    {
+        "COND.LB.LBTESTCD.ee1bd4eb": {
+            "OID": "COND.LB.LBTESTCD.ee1bd4eb",
+            "RangeCheck": [
+                {
+                    "SoftHard": "Soft",
+                    "ItemOID": "IT.LB.LBTESTCD",
+                    "Comparator": "EQ",
+                    "CheckValue": [
+                        "NEUTB"
+                    ]
+                }
+            ]
+        }
+    },
+    {
+        "COND.LB.LBTESTCD.7949af26": {
+            "OID": "COND.LB.LBTESTCD.7949af26",
+            "RangeCheck": [
+                {
+                    "SoftHard": "Soft",
+                    "ItemOID": "IT.LB.LBTESTCD",
+                    "Comparator": "EQ",
+                    "CheckValue": [
+                        "NEUT"
+                    ]
+                }
+            ]
+        }
+    },
+    {
+        "COND.LB.LBTESTCD.875d3e51": {
+            "OID": "COND.LB.LBTESTCD.875d3e51",
+            "RangeCheck": [
+                {
+                    "SoftHard": "Soft",
+                    "ItemOID": "IT.LB.LBTESTCD",
+                    "Comparator": "EQ",
+                    "CheckValue": [
+                        "MONO"
+                    ]
+                }
+            ]
+        }
+    },
+    {
+        "COND.LB.LBTESTCD.67b49e63": {
+            "OID": "COND.LB.LBTESTCD.67b49e63",
+            "RangeCheck": [
+                {
+                    "SoftHard": "Soft",
+                    "ItemOID": "IT.LB.LBTESTCD",
+                    "Comparator": "EQ",
+                    "CheckValue": [
+                        "EOS"
+                    ]
+                }
+            ]
+        }
+    },
+    {
+        "COND.LB.LBTESTCD.287c5431": {
+            "OID": "COND.LB.LBTESTCD.287c5431",
+            "RangeCheck": [
+                {
+                    "SoftHard": "Soft",
+                    "ItemOID": "IT.LB.LBTESTCD",
+                    "Comparator": "EQ",
+                    "CheckValue": [
+                        "BASO"
+                    ]
+                }
+            ]
+        }
+    },
+    {
+        "COND.LB.LBTESTCD.e319c1c9": {
+            "OID": "COND.LB.LBTESTCD.e319c1c9",
+            "RangeCheck": [
+                {
+                    "SoftHard": "Soft",
+                    "ItemOID": "IT.LB.LBTESTCD",
+                    "Comparator": "EQ",
+                    "CheckValue": [
+                        "PLAT"
+                    ]
+                }
+            ]
+        }
+    },
+    {
+        "COND.LB.LBTESTCD.595603b0": {
+            "OID": "COND.LB.LBTESTCD.595603b0",
+            "RangeCheck": [
+                {
+                    "SoftHard": "Soft",
+                    "ItemOID": "IT.LB.LBTESTCD",
+                    "Comparator": "EQ",
+                    "CheckValue": [
+                        "MICROCY"
+                    ]
+                }
+            ]
+        }
+    },
+    {
+        "COND.LB.LBSPEC.e9dcc27d": {
+            "OID": "COND.LB.LBSPEC.e9dcc27d",
+            "RangeCheck": [
+                {
+                    "SoftHard": "Soft",
+                    "ItemOID": "IT.LB.LBSPEC",
+                    "Comparator": "EQ",
+                    "CheckValue": [
+                        "URINE SEDIMENT"
+                    ]
+                }
+            ]
+        }
+    },
+    {
+        "COND.LB.LBTESTCD.4a019cc1": {
+            "OID": "COND.LB.LBTESTCD.4a019cc1",
+            "RangeCheck": [
+                {
+                    "SoftHard": "Soft",
+                    "ItemOID": "IT.LB.LBTESTCD",
+                    "Comparator": "EQ",
+                    "CheckValue": [
+                        "MACROCY"
+                    ]
+                }
+            ]
+        }
+    },
+    {
+        "COND.LB.LBTESTCD.4c8c90fb": {
+            "OID": "COND.LB.LBTESTCD.4c8c90fb",
+            "RangeCheck": [
+                {
+                    "SoftHard": "Soft",
+                    "ItemOID": "IT.LB.LBTESTCD",
+                    "Comparator": "EQ",
+                    "CheckValue": [
+                        "ANISO"
+                    ]
+                }
+            ]
+        }
+    },
+    {
+        "COND.LB.LBTESTCD.44179c1d": {
+            "OID": "COND.LB.LBTESTCD.44179c1d",
+            "RangeCheck": [
+                {
+                    "SoftHard": "Soft",
+                    "ItemOID": "IT.LB.LBTESTCD",
+                    "Comparator": "EQ",
+                    "CheckValue": [
+                        "POIKILO"
+                    ]
+                }
+            ]
+        }
+    },
+    {
+        "COND.LB.LBTESTCD.279ee1d7": {
+            "OID": "COND.LB.LBTESTCD.279ee1d7",
+            "RangeCheck": [
+                {
+                    "SoftHard": "Soft",
+                    "ItemOID": "IT.LB.LBTESTCD",
+                    "Comparator": "EQ",
+                    "CheckValue": [
+                        "POLYCHR"
+                    ]
+                }
+            ]
+        }
+    },
+    {
+        "COND.LB.LBTESTCD.2cf3f505": {
+            "OID": "COND.LB.LBTESTCD.2cf3f505",
+            "RangeCheck": [
+                {
+                    "SoftHard": "Soft",
+                    "ItemOID": "IT.LB.LBTESTCD",
+                    "Comparator": "EQ",
+                    "CheckValue": [
+                        "ALT"
+                    ]
+                }
+            ]
+        }
+    },
+    {
+        "COND.LB.LBSPEC.2a0ba9ed": {
+            "OID": "COND.LB.LBSPEC.2a0ba9ed",
+            "RangeCheck": [
+                {
+                    "SoftHard": "Soft",
+                    "ItemOID": "IT.LB.LBSPEC",
+                    "Comparator": "EQ",
+                    "CheckValue": [
+                        "SERUM OR PLASMA"
+                    ]
+                }
+            ]
+        }
+    },
+    {
+        "COND.LB.LBTESTCD.65d4f752": {
+            "OID": "COND.LB.LBTESTCD.65d4f752",
+            "RangeCheck": [
+                {
+                    "SoftHard": "Soft",
+                    "ItemOID": "IT.LB.LBTESTCD",
+                    "Comparator": "EQ",
+                    "CheckValue": [
+                        "ALB"
+                    ]
+                }
+            ]
+        }
+    },
+    {
+        "COND.LB.LBSPEC.fe2e0fb3": {
+            "OID": "COND.LB.LBSPEC.fe2e0fb3",
+            "RangeCheck": [
+                {
+                    "SoftHard": "Soft",
+                    "ItemOID": "IT.LB.LBSPEC",
+                    "Comparator": "EQ",
+                    "CheckValue": [
+                        "URINE"
+                    ]
+                }
+            ]
+        }
+    },
+    {
+        "COND.LB.LBTESTCD.b2d661b6": {
+            "OID": "COND.LB.LBTESTCD.b2d661b6",
+            "RangeCheck": [
+                {
+                    "SoftHard": "Soft",
+                    "ItemOID": "IT.LB.LBTESTCD",
+                    "Comparator": "EQ",
+                    "CheckValue": [
+                        "ALP"
+                    ]
+                }
+            ]
+        }
+    },
+    {
+        "COND.LB.LBTESTCD.ee16e022": {
+            "OID": "COND.LB.LBTESTCD.ee16e022",
+            "RangeCheck": [
+                {
+                    "SoftHard": "Soft",
+                    "ItemOID": "IT.LB.LBTESTCD",
+                    "Comparator": "EQ",
+                    "CheckValue": [
+                        "AST"
+                    ]
+                }
+            ]
+        }
+    },
+    {
+        "COND.LB.LBTESTCD.09d56ffc": {
+            "OID": "COND.LB.LBTESTCD.09d56ffc",
+            "RangeCheck": [
+                {
+                    "SoftHard": "Soft",
+                    "ItemOID": "IT.LB.LBTESTCD",
+                    "Comparator": "EQ",
+                    "CheckValue": [
+                        "CREAT"
+                    ]
+                }
+            ]
+        }
+    },
+    {
+        "COND.LB.LBTESTCD.5e7b0134": {
+            "OID": "COND.LB.LBTESTCD.5e7b0134",
+            "RangeCheck": [
+                {
+                    "SoftHard": "Soft",
+                    "ItemOID": "IT.LB.LBTESTCD",
+                    "Comparator": "EQ",
+                    "CheckValue": [
+                        "K"
+                    ]
+                }
+            ]
+        }
+    },
+    {
+        "COND.LB.LBTESTCD.1f6a1d0f": {
+            "OID": "COND.LB.LBTESTCD.1f6a1d0f",
+            "RangeCheck": [
+                {
+                    "SoftHard": "Soft",
+                    "ItemOID": "IT.LB.LBTESTCD",
+                    "Comparator": "EQ",
+                    "CheckValue": [
+                        "SODIUM"
+                    ]
+                }
+            ]
+        }
+    },
+    {
+        "COND.LB.LBTESTCD.c95065ae": {
+            "OID": "COND.LB.LBTESTCD.c95065ae",
+            "RangeCheck": [
+                {
+                    "SoftHard": "Soft",
+                    "ItemOID": "IT.LB.LBTESTCD",
+                    "Comparator": "EQ",
+                    "CheckValue": [
+                        "UREAN"
+                    ]
+                }
+            ]
+        }
+    },
+    {
+        "COND.LB.LBTESTCD.608ed901": {
+            "OID": "COND.LB.LBTESTCD.608ed901",
+            "RangeCheck": [
+                {
+                    "SoftHard": "Soft",
+                    "ItemOID": "IT.LB.LBTESTCD",
+                    "Comparator": "EQ",
+                    "CheckValue": [
+                        "BICARB"
+                    ]
+                }
+            ]
+        }
+    },
+    {
+        "COND.LB.LBTESTCD.4bda7613": {
+            "OID": "COND.LB.LBTESTCD.4bda7613",
+            "RangeCheck": [
+                {
+                    "SoftHard": "Soft",
+                    "ItemOID": "IT.LB.LBTESTCD",
+                    "Comparator": "EQ",
+                    "CheckValue": [
+                        "CL"
+                    ]
+                }
+            ]
+        }
+    },
+    {
+        "COND.LB.LBTESTCD.fb28452f": {
+            "OID": "COND.LB.LBTESTCD.fb28452f",
+            "RangeCheck": [
+                {
+                    "SoftHard": "Soft",
+                    "ItemOID": "IT.LB.LBTESTCD",
+                    "Comparator": "EQ",
+                    "CheckValue": [
+                        "BILI"
+                    ]
+                }
+            ]
+        }
+    },
+    {
+        "COND.LB.LBTESTCD.4ea796f7": {
+            "OID": "COND.LB.LBTESTCD.4ea796f7",
+            "RangeCheck": [
+                {
+                    "SoftHard": "Soft",
+                    "ItemOID": "IT.LB.LBTESTCD",
+                    "Comparator": "EQ",
+                    "CheckValue": [
+                        "GGT"
+                    ]
+                }
+            ]
+        }
+    },
+    {
+        "COND.LB.LBTESTCD.4787c4c4": {
+            "OID": "COND.LB.LBTESTCD.4787c4c4",
+            "RangeCheck": [
+                {
+                    "SoftHard": "Soft",
+                    "ItemOID": "IT.LB.LBTESTCD",
+                    "Comparator": "EQ",
+                    "CheckValue": [
+                        "URATE"
+                    ]
+                }
+            ]
+        }
+    },
+    {
+        "COND.LB.LBTESTCD.9181afaf": {
+            "OID": "COND.LB.LBTESTCD.9181afaf",
+            "RangeCheck": [
+                {
+                    "SoftHard": "Soft",
+                    "ItemOID": "IT.LB.LBTESTCD",
+                    "Comparator": "EQ",
+                    "CheckValue": [
+                        "PHOS"
+                    ]
+                }
+            ]
+        }
+    },
+    {
+        "COND.LB.LBTESTCD.9bb90c0f": {
+            "OID": "COND.LB.LBTESTCD.9bb90c0f",
+            "RangeCheck": [
+                {
+                    "SoftHard": "Soft",
+                    "ItemOID": "IT.LB.LBTESTCD",
+                    "Comparator": "EQ",
+                    "CheckValue": [
+                        "CA"
+                    ]
+                }
+            ]
+        }
+    },
+    {
+        "COND.LB.LBTESTCD.5f3309c8": {
+            "OID": "COND.LB.LBTESTCD.5f3309c8",
+            "RangeCheck": [
+                {
+                    "SoftHard": "Soft",
+                    "ItemOID": "IT.LB.LBTESTCD",
+                    "Comparator": "EQ",
+                    "CheckValue": [
+                        "GLUC"
+                    ]
+                }
+            ]
+        }
+    },
+    {
+        "COND.LB.LBTESTCD.3705806a": {
+            "OID": "COND.LB.LBTESTCD.3705806a",
+            "RangeCheck": [
+                {
+                    "SoftHard": "Soft",
+                    "ItemOID": "IT.LB.LBTESTCD",
+                    "Comparator": "EQ",
+                    "CheckValue": [
+                        "PROT"
+                    ]
+                }
+            ]
+        }
+    },
+    {
+        "COND.LB.LBTESTCD.546f62a6": {
+            "OID": "COND.LB.LBTESTCD.546f62a6",
+            "RangeCheck": [
+                {
+                    "SoftHard": "Soft",
+                    "ItemOID": "IT.LB.LBTESTCD",
+                    "Comparator": "EQ",
+                    "CheckValue": [
+                        "CHOL"
+                    ]
+                }
+            ]
+        }
+    },
+    {
+        "COND.LB.LBTESTCD.662421ca": {
+            "OID": "COND.LB.LBTESTCD.662421ca",
+            "RangeCheck": [
+                {
+                    "SoftHard": "Soft",
+                    "ItemOID": "IT.LB.LBTESTCD",
+                    "Comparator": "EQ",
+                    "CheckValue": [
+                        "T3UP"
+                    ]
+                }
+            ]
+        }
+    },
+    {
+        "COND.LB.LBTESTCD.253a2d2c": {
+            "OID": "COND.LB.LBTESTCD.253a2d2c",
+            "RangeCheck": [
+                {
+                    "SoftHard": "Soft",
+                    "ItemOID": "IT.LB.LBTESTCD",
+                    "Comparator": "EQ",
+                    "CheckValue": [
+                        "T3"
+                    ]
+                }
+            ]
+        }
+    },
+    {
+        "COND.LB.LBTESTCD.32179136": {
+            "OID": "COND.LB.LBTESTCD.32179136",
+            "RangeCheck": [
+                {
+                    "SoftHard": "Soft",
+                    "ItemOID": "IT.LB.LBTESTCD",
+                    "Comparator": "EQ",
+                    "CheckValue": [
+                        "T4FR"
+                    ]
+                }
+            ]
+        }
+    },
+    {
+        "COND.LB.LBTESTCD.68013b69": {
+            "OID": "COND.LB.LBTESTCD.68013b69",
+            "RangeCheck": [
+                {
+                    "SoftHard": "Soft",
+                    "ItemOID": "IT.LB.LBTESTCD",
+                    "Comparator": "EQ",
+                    "CheckValue": [
+                        "T4FRIDX"
+                    ]
+                }
+            ]
+        }
+    },
+    {
+        "COND.LB.LBTESTCD.af474d82": {
+            "OID": "COND.LB.LBTESTCD.af474d82",
+            "RangeCheck": [
+                {
+                    "SoftHard": "Soft",
+                    "ItemOID": "IT.LB.LBTESTCD",
+                    "Comparator": "EQ",
+                    "CheckValue": [
+                        "TSH"
+                    ]
+                }
+            ]
+        }
+    },
+    {
+        "COND.LB.LBTESTCD.ee2fb0c8": {
+            "OID": "COND.LB.LBTESTCD.ee2fb0c8",
+            "RangeCheck": [
+                {
+                    "SoftHard": "Soft",
+                    "ItemOID": "IT.LB.LBTESTCD",
+                    "Comparator": "EQ",
+                    "CheckValue": [
+                        "VITB9"
+                    ]
+                }
+            ]
+        }
+    },
+    {
+        "COND.LB.LBTESTCD.a07b5dee": {
+            "OID": "COND.LB.LBTESTCD.a07b5dee",
+            "RangeCheck": [
+                {
+                    "SoftHard": "Soft",
+                    "ItemOID": "IT.LB.LBTESTCD",
+                    "Comparator": "EQ",
+                    "CheckValue": [
+                        "VITB12"
+                    ]
+                }
+            ]
+        }
+    },
+    {
+        "COND.LB.LBTESTCD.797729c2": {
+            "OID": "COND.LB.LBTESTCD.797729c2",
+            "RangeCheck": [
+                {
+                    "SoftHard": "Soft",
+                    "ItemOID": "IT.LB.LBTESTCD",
+                    "Comparator": "EQ",
+                    "CheckValue": [
+                        "COLOR"
+                    ]
+                }
+            ]
+        }
+    },
+    {
+        "COND.LB.LBTESTCD.5613f4c1": {
+            "OID": "COND.LB.LBTESTCD.5613f4c1",
+            "RangeCheck": [
+                {
+                    "SoftHard": "Soft",
+                    "ItemOID": "IT.LB.LBTESTCD",
+                    "Comparator": "EQ",
+                    "CheckValue": [
+                        "SPGRAV"
+                    ]
+                }
+            ]
+        }
+    },
+    {
+        "COND.LB.LBTESTCD.e6f6bca1": {
+            "OID": "COND.LB.LBTESTCD.e6f6bca1",
+            "RangeCheck": [
+                {
+                    "SoftHard": "Soft",
+                    "ItemOID": "IT.LB.LBTESTCD",
+                    "Comparator": "EQ",
+                    "CheckValue": [
+                        "KETONES"
+                    ]
+                }
+            ]
+        }
+    },
+    {
+        "COND.LB.LBTESTCD.ce5391eb": {
+            "OID": "COND.LB.LBTESTCD.ce5391eb",
+            "RangeCheck": [
+                {
+                    "SoftHard": "Soft",
+                    "ItemOID": "IT.LB.LBTESTCD",
+                    "Comparator": "EQ",
+                    "CheckValue": [
+                        "UROBIL"
+                    ]
+                }
+            ]
+        }
+    },
+    {
+        "COND.LB.LBTESTCD.d277d8f1": {
+            "OID": "COND.LB.LBTESTCD.d277d8f1",
+            "RangeCheck": [
+                {
+                    "SoftHard": "Soft",
+                    "ItemOID": "IT.LB.LBTESTCD",
+                    "Comparator": "EQ",
+                    "CheckValue": [
+                        "OCCBLD"
+                    ]
+                }
+            ]
+        }
+    },
+    {
+        "COND.LB.LBSPEC.22e91b54": {
+            "OID": "COND.LB.LBSPEC.22e91b54",
+            "RangeCheck": [
+                {
+                    "SoftHard": "Soft",
+                    "ItemOID": "IT.LB.LBSPEC",
+                    "Comparator": "EQ",
+                    "CheckValue": [
+                        "STOOL"
+                    ]
+                }
+            ]
+        }
+    },
+    {
+        "COND.LB.LBTESTCD.b3c8bdba": {
+            "OID": "COND.LB.LBTESTCD.b3c8bdba",
+            "RangeCheck": [
+                {
+                    "SoftHard": "Soft",
+                    "ItemOID": "IT.LB.LBTESTCD",
+                    "Comparator": "EQ",
+                    "CheckValue": [
+                        "NITRITE"
+                    ]
+                }
+            ]
+        }
+    },
+    {
+        "COND.LB.LBTESTCD.1350d454": {
+            "OID": "COND.LB.LBTESTCD.1350d454",
+            "RangeCheck": [
+                {
+                    "SoftHard": "Soft",
+                    "ItemOID": "IT.LB.LBTESTCD",
+                    "Comparator": "EQ",
+                    "CheckValue": [
+                        "HBA1C"
+                    ]
+                }
+            ]
+        }
+    },
+    {
+        "COND.LB.LBTESTCD.5717b134": {
+            "OID": "COND.LB.LBTESTCD.5717b134",
+            "RangeCheck": [
+                {
+                    "SoftHard": "Soft",
+                    "ItemOID": "IT.LB.LBTESTCD",
+                    "Comparator": "EQ",
+                    "CheckValue": [
+                        "HBA1CHGB"
+                    ]
+                }
+            ]
+        }
+    },
+    {
+        "COND.MB.MBTESTCD.b145c972": {
+            "OID": "COND.MB.MBTESTCD.b145c972",
+            "RangeCheck": [
+                {
+                    "SoftHard": "Soft",
+                    "ItemOID": "IT.MB.MBTESTCD",
+                    "Comparator": "EQ",
+                    "CheckValue": [
+                        "TPLAB"
+                    ]
+                }
+            ]
+        }
+    },
+    {
+        "COND.MB.MBTSTDTL.4a168fd0": {
+            "OID": "COND.MB.MBTSTDTL.4a168fd0",
+            "RangeCheck": [
+                {
+                    "SoftHard": "Soft",
+                    "ItemOID": "IT.MB.MBTSTDTL",
+                    "Comparator": "EQ",
+                    "CheckValue": [
+                        "DETECTION"
+                    ]
+                }
+            ]
+        }
+    },
+    {
+        "COND.MB.MBSPEC.41a5e97b": {
+            "OID": "COND.MB.MBSPEC.41a5e97b",
+            "RangeCheck": [
+                {
+                    "SoftHard": "Soft",
+                    "ItemOID": "IT.MB.MBSPEC",
+                    "Comparator": "EQ",
+                    "CheckValue": [
+                        "SERUM"
+                    ]
+                }
+            ]
+        }
+    },
+    {
+        "COND.MB.MBMETHOD.6348a3e5": {
+            "OID": "COND.MB.MBMETHOD.6348a3e5",
+            "RangeCheck": [
+                {
+                    "SoftHard": "Soft",
+                    "ItemOID": "IT.MB.MBMETHOD",
+                    "Comparator": "IN",
+                    "CheckValue": [
+                        "FLUORESCENT IMMUNOASSAY",
+                        "HEMAGGLUTINATION ASSAY",
+                        "CHEMILUMINESCENT MICROPARTICLE IMMUNOASSAY",
+                        "POLYMERASE CHAIN REACTION",
+                        "IMMUNOBLOT",
+                        "RAPID IMMUNOASSAY"
+                    ]
+                }
+            ]
+        }
+    },
+    {
+        "COND.MB.MBTESTCD.18cb7208": {
+            "OID": "COND.MB.MBTESTCD.18cb7208",
+            "RangeCheck": [
+                {
+                    "SoftHard": "Soft",
+                    "ItemOID": "IT.MB.MBTESTCD",
+                    "Comparator": "EQ",
+                    "CheckValue": [
+                        "TPADNA"
+                    ]
+                }
+            ]
+        }
+    },
+    {
+        "COND.MB.MBSPEC.b395cb00": {
+            "OID": "COND.MB.MBSPEC.b395cb00",
+            "RangeCheck": [
+                {
+                    "SoftHard": "Soft",
+                    "ItemOID": "IT.MB.MBSPEC",
+                    "Comparator": "IN",
+                    "CheckValue": [
+                        "BLOOD",
+                        "CEREBROSPINAL FLUID",
+                        "FLUID",
+                        "SWABBED MATERIAL",
+                        "URINE"
+                    ]
+                }
+            ]
+        }
+    },
+    {
+        "COND.MB.MBMETHOD.92bec008": {
+            "OID": "COND.MB.MBMETHOD.92bec008",
+            "RangeCheck": [
+                {
+                    "SoftHard": "Soft",
+                    "ItemOID": "IT.MB.MBMETHOD",
+                    "Comparator": "EQ",
+                    "CheckValue": [
+                        "LINE PROBE ASSAY"
+                    ]
+                }
+            ]
+        }
+    },
+    {
+        "COND.IE.IETESTCD.02e45534": {
+            "OID": "COND.IE.IETESTCD.02e45534",
+            "RangeCheck": [
+                {
+                    "SoftHard": "Soft",
+                    "ItemOID": "IT.IE.IETESTCD",
+                    "Comparator": "EQ",
+                    "CheckValue": [
+                        "IN01"
+                    ]
+                }
+            ]
+        }
+    },
+    {
+        "COND.IE.IETESTCD.b98e6bfa": {
+            "OID": "COND.IE.IETESTCD.b98e6bfa",
+            "RangeCheck": [
+                {
+                    "SoftHard": "Soft",
+                    "ItemOID": "IT.IE.IETESTCD",
+                    "Comparator": "EQ",
+                    "CheckValue": [
+                        "IN02"
+                    ]
+                }
+            ]
+        }
+    },
+    {
+        "COND.IE.IETESTCD.414aa6b7": {
+            "OID": "COND.IE.IETESTCD.414aa6b7",
+            "RangeCheck": [
+                {
+                    "SoftHard": "Soft",
+                    "ItemOID": "IT.IE.IETESTCD",
+                    "Comparator": "EQ",
+                    "CheckValue": [
+                        "IN03"
+                    ]
+                }
+            ]
+        }
+    },
+    {
+        "COND.IE.IETESTCD.5600ece7": {
+            "OID": "COND.IE.IETESTCD.5600ece7",
+            "RangeCheck": [
+                {
+                    "SoftHard": "Soft",
+                    "ItemOID": "IT.IE.IETESTCD",
+                    "Comparator": "EQ",
+                    "CheckValue": [
+                        "IN04"
+                    ]
+                }
+            ]
+        }
+    },
+    {
+        "COND.IE.IETESTCD.e62058fb": {
+            "OID": "COND.IE.IETESTCD.e62058fb",
+            "RangeCheck": [
+                {
+                    "SoftHard": "Soft",
+                    "ItemOID": "IT.IE.IETESTCD",
+                    "Comparator": "EQ",
+                    "CheckValue": [
+                        "IN05"
+                    ]
+                }
+            ]
+        }
+    },
+    {
+        "COND.IE.IETESTCD.cae1a567": {
+            "OID": "COND.IE.IETESTCD.cae1a567",
+            "RangeCheck": [
+                {
+                    "SoftHard": "Soft",
+                    "ItemOID": "IT.IE.IETESTCD",
+                    "Comparator": "EQ",
+                    "CheckValue": [
+                        "IN06"
+                    ]
+                }
+            ]
+        }
+    },
+    {
+        "COND.IE.IETESTCD.0b4d25da": {
+            "OID": "COND.IE.IETESTCD.0b4d25da",
+            "RangeCheck": [
+                {
+                    "SoftHard": "Soft",
+                    "ItemOID": "IT.IE.IETESTCD",
+                    "Comparator": "EQ",
+                    "CheckValue": [
+                        "IN07"
+                    ]
+                }
+            ]
+        }
+    },
+    {
+        "COND.IE.IETESTCD.dd1bb437": {
+            "OID": "COND.IE.IETESTCD.dd1bb437",
+            "RangeCheck": [
+                {
+                    "SoftHard": "Soft",
+                    "ItemOID": "IT.IE.IETESTCD",
+                    "Comparator": "EQ",
+                    "CheckValue": [
+                        "IN08"
+                    ]
+                }
+            ]
+        }
+    },
+    {
+        "COND.IE.IETESTCD.b86f72a6": {
+            "OID": "COND.IE.IETESTCD.b86f72a6",
+            "RangeCheck": [
+                {
+                    "SoftHard": "Soft",
+                    "ItemOID": "IT.IE.IETESTCD",
+                    "Comparator": "EQ",
+                    "CheckValue": [
+                        "EX01"
+                    ]
+                }
+            ]
+        }
+    },
+    {
+        "COND.IE.IETESTCD.ee806e62": {
+            "OID": "COND.IE.IETESTCD.ee806e62",
+            "RangeCheck": [
+                {
+                    "SoftHard": "Soft",
+                    "ItemOID": "IT.IE.IETESTCD",
+                    "Comparator": "EQ",
+                    "CheckValue": [
+                        "EX02"
+                    ]
+                }
+            ]
+        }
+    },
+    {
+        "COND.IE.IETESTCD.13b40508": {
+            "OID": "COND.IE.IETESTCD.13b40508",
+            "RangeCheck": [
+                {
+                    "SoftHard": "Soft",
+                    "ItemOID": "IT.IE.IETESTCD",
+                    "Comparator": "EQ",
+                    "CheckValue": [
+                        "EX03"
+                    ]
+                }
+            ]
+        }
+    },
+    {
+        "COND.IE.IETESTCD.27412cd0": {
+            "OID": "COND.IE.IETESTCD.27412cd0",
+            "RangeCheck": [
+                {
+                    "SoftHard": "Soft",
+                    "ItemOID": "IT.IE.IETESTCD",
+                    "Comparator": "EQ",
+                    "CheckValue": [
+                        "EX04"
+                    ]
+                }
+            ]
+        }
+    },
+    {
+        "COND.IE.IETESTCD.c264aeb4": {
+            "OID": "COND.IE.IETESTCD.c264aeb4",
+            "RangeCheck": [
+                {
+                    "SoftHard": "Soft",
+                    "ItemOID": "IT.IE.IETESTCD",
+                    "Comparator": "EQ",
+                    "CheckValue": [
+                        "EX05"
+                    ]
+                }
+            ]
+        }
+    },
+    {
+        "COND.IE.IETESTCD.904b6c2f": {
+            "OID": "COND.IE.IETESTCD.904b6c2f",
+            "RangeCheck": [
+                {
+                    "SoftHard": "Soft",
+                    "ItemOID": "IT.IE.IETESTCD",
+                    "Comparator": "EQ",
+                    "CheckValue": [
+                        "EX06"
+                    ]
+                }
+            ]
+        }
+    },
+    {
+        "COND.IE.IETESTCD.29880e8c": {
+            "OID": "COND.IE.IETESTCD.29880e8c",
+            "RangeCheck": [
+                {
+                    "SoftHard": "Soft",
+                    "ItemOID": "IT.IE.IETESTCD",
+                    "Comparator": "EQ",
+                    "CheckValue": [
+                        "EX07"
+                    ]
+                }
+            ]
+        }
+    },
+    {
+        "COND.IE.IETESTCD.7f6091a2": {
+            "OID": "COND.IE.IETESTCD.7f6091a2",
+            "RangeCheck": [
+                {
+                    "SoftHard": "Soft",
+                    "ItemOID": "IT.IE.IETESTCD",
+                    "Comparator": "EQ",
+                    "CheckValue": [
+                        "EX08"
+                    ]
+                }
+            ]
+        }
+    },
+    {
+        "COND.IE.IETESTCD.8f18d21b": {
+            "OID": "COND.IE.IETESTCD.8f18d21b",
+            "RangeCheck": [
+                {
+                    "SoftHard": "Soft",
+                    "ItemOID": "IT.IE.IETESTCD",
+                    "Comparator": "EQ",
+                    "CheckValue": [
+                        "EX09"
+                    ]
+                }
+            ]
+        }
+    },
+    {
+        "COND.IE.IETESTCD.86209c99": {
+            "OID": "COND.IE.IETESTCD.86209c99",
+            "RangeCheck": [
+                {
+                    "SoftHard": "Soft",
+                    "ItemOID": "IT.IE.IETESTCD",
+                    "Comparator": "EQ",
+                    "CheckValue": [
+                        "EX10"
+                    ]
+                }
+            ]
+        }
+    },
+    {
+        "COND.IE.IETESTCD.aab5d609": {
+            "OID": "COND.IE.IETESTCD.aab5d609",
+            "RangeCheck": [
+                {
+                    "SoftHard": "Soft",
+                    "ItemOID": "IT.IE.IETESTCD",
+                    "Comparator": "EQ",
+                    "CheckValue": [
+                        "EX11"
+                    ]
+                }
+            ]
+        }
+    },
+    {
+        "COND.IE.IETESTCD.25355161": {
+            "OID": "COND.IE.IETESTCD.25355161",
+            "RangeCheck": [
+                {
+                    "SoftHard": "Soft",
+                    "ItemOID": "IT.IE.IETESTCD",
+                    "Comparator": "EQ",
+                    "CheckValue": [
+                        "EX12"
+                    ]
+                }
+            ]
+        }
+    },
+    {
+        "COND.IE.IETESTCD.a38963bd": {
+            "OID": "COND.IE.IETESTCD.a38963bd",
+            "RangeCheck": [
+                {
+                    "SoftHard": "Soft",
+                    "ItemOID": "IT.IE.IETESTCD",
+                    "Comparator": "EQ",
+                    "CheckValue": [
+                        "EX13"
+                    ]
+                }
+            ]
+        }
+    },
+    {
+        "COND.IE.IETESTCD.4f25707e": {
+            "OID": "COND.IE.IETESTCD.4f25707e",
+            "RangeCheck": [
+                {
+                    "SoftHard": "Soft",
+                    "ItemOID": "IT.IE.IETESTCD",
+                    "Comparator": "EQ",
+                    "CheckValue": [
+                        "EX14"
+                    ]
+                }
+            ]
+        }
+    },
+    {
+        "COND.IE.IETESTCD.2a079ede": {
+            "OID": "COND.IE.IETESTCD.2a079ede",
+            "RangeCheck": [
+                {
+                    "SoftHard": "Soft",
+                    "ItemOID": "IT.IE.IETESTCD",
+                    "Comparator": "EQ",
+                    "CheckValue": [
+                        "EX15"
+                    ]
+                }
+            ]
+        }
+    },
+    {
+        "COND.IE.IETESTCD.871b7729": {
+            "OID": "COND.IE.IETESTCD.871b7729",
+            "RangeCheck": [
+                {
+                    "SoftHard": "Soft",
+                    "ItemOID": "IT.IE.IETESTCD",
+                    "Comparator": "EQ",
+                    "CheckValue": [
+                        "EX16"
+                    ]
+                }
+            ]
+        }
+    },
+    {
+        "COND.IE.IETESTCD.51c4af93": {
+            "OID": "COND.IE.IETESTCD.51c4af93",
+            "RangeCheck": [
+                {
+                    "SoftHard": "Soft",
+                    "ItemOID": "IT.IE.IETESTCD",
+                    "Comparator": "EQ",
+                    "CheckValue": [
+                        "EX17"
+                    ]
+                }
+            ]
+        }
+    },
+    {
+        "COND.IE.IETESTCD.a954a7c8": {
+            "OID": "COND.IE.IETESTCD.a954a7c8",
+            "RangeCheck": [
+                {
+                    "SoftHard": "Soft",
+                    "ItemOID": "IT.IE.IETESTCD",
+                    "Comparator": "EQ",
+                    "CheckValue": [
+                        "EX18"
+                    ]
+                }
+            ]
+        }
+    },
+    {
+        "COND.IE.IETESTCD.8f66ca7f": {
+            "OID": "COND.IE.IETESTCD.8f66ca7f",
+            "RangeCheck": [
+                {
+                    "SoftHard": "Soft",
+                    "ItemOID": "IT.IE.IETESTCD",
+                    "Comparator": "EQ",
+                    "CheckValue": [
+                        "EX19"
+                    ]
+                }
+            ]
+        }
+    },
+    {
+        "COND.IE.IETESTCD.528d2eb0": {
+            "OID": "COND.IE.IETESTCD.528d2eb0",
+            "RangeCheck": [
+                {
+                    "SoftHard": "Soft",
+                    "ItemOID": "IT.IE.IETESTCD",
+                    "Comparator": "EQ",
+                    "CheckValue": [
+                        "EX20"
+                    ]
+                }
+            ]
+        }
+    },
+    {
+        "COND.IE.IETESTCD.bd5f1313": {
+            "OID": "COND.IE.IETESTCD.bd5f1313",
+            "RangeCheck": [
+                {
+                    "SoftHard": "Soft",
+                    "ItemOID": "IT.IE.IETESTCD",
+                    "Comparator": "EQ",
+                    "CheckValue": [
+                        "EX21"
+                    ]
+                }
+            ]
+        }
+    },
+    {
+        "COND.IE.IETESTCD.01e1c173": {
+            "OID": "COND.IE.IETESTCD.01e1c173",
+            "RangeCheck": [
+                {
+                    "SoftHard": "Soft",
+                    "ItemOID": "IT.IE.IETESTCD",
+                    "Comparator": "EQ",
+                    "CheckValue": [
+                        "EX22"
+                    ]
+                }
+            ]
+        }
+    },
+    {
+        "COND.IE.IETESTCD.b8e48983": {
+            "OID": "COND.IE.IETESTCD.b8e48983",
+            "RangeCheck": [
+                {
+                    "SoftHard": "Soft",
+                    "ItemOID": "IT.IE.IETESTCD",
+                    "Comparator": "EQ",
+                    "CheckValue": [
+                        "EX23"
+                    ]
+                }
+            ]
+        }
+    },
+    {
+        "COND.SE.ETCD.a5ec67be": {
+            "OID": "COND.SE.ETCD.a5ec67be",
+            "RangeCheck": [
+                {
+                    "SoftHard": "Soft",
+                    "ItemOID": "IT.SE.ETCD",
+                    "Comparator": "EQ",
+                    "CheckValue": [
+                        "EL1"
+                    ]
+                }
+            ]
+        }
+    },
+    {
+        "COND.SE.ETCD.b57045b1": {
+            "OID": "COND.SE.ETCD.b57045b1",
+            "RangeCheck": [
+                {
+                    "SoftHard": "Soft",
+                    "ItemOID": "IT.SE.ETCD",
+                    "Comparator": "EQ",
+                    "CheckValue": [
+                        "EL2"
+                    ]
+                }
+            ]
+        }
+    },
+    {
+        "COND.SE.ETCD.d92b848b": {
+            "OID": "COND.SE.ETCD.d92b848b",
+            "RangeCheck": [
+                {
+                    "SoftHard": "Soft",
+                    "ItemOID": "IT.SE.ETCD",
+                    "Comparator": "EQ",
+                    "CheckValue": [
+                        "EL7"
+                    ]
+                }
+            ]
+        }
+    },
+    {
+        "COND.SE.ETCD.81a5ce8a": {
+            "OID": "COND.SE.ETCD.81a5ce8a",
+            "RangeCheck": [
+                {
+                    "SoftHard": "Soft",
+                    "ItemOID": "IT.SE.ETCD",
+                    "Comparator": "EQ",
+                    "CheckValue": [
+                        "EL3"
+                    ]
+                }
+            ]
+        }
+    },
+    {
+        "COND.SE.ETCD.4826314e": {
+            "OID": "COND.SE.ETCD.4826314e",
+            "RangeCheck": [
+                {
+                    "SoftHard": "Soft",
+                    "ItemOID": "IT.SE.ETCD",
+                    "Comparator": "EQ",
+                    "CheckValue": [
+                        "EL4"
+                    ]
+                }
+            ]
+        }
+    },
+    {
+        "COND.SE.ETCD.e6929e12": {
+            "OID": "COND.SE.ETCD.e6929e12",
+            "RangeCheck": [
+                {
+                    "SoftHard": "Soft",
+                    "ItemOID": "IT.SE.ETCD",
+                    "Comparator": "EQ",
+                    "CheckValue": [
+                        "EL5"
+                    ]
+                }
+            ]
+        }
+    },
+    {
+        "COND.SE.ETCD.cb472c47": {
+            "OID": "COND.SE.ETCD.cb472c47",
+            "RangeCheck": [
+                {
+                    "SoftHard": "Soft",
+                    "ItemOID": "IT.SE.ETCD",
+                    "Comparator": "EQ",
+                    "CheckValue": [
+                        "EL6"
+                    ]
+                }
+            ]
+        }
+    }
+]

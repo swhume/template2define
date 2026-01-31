@@ -1,7 +1,6 @@
 from odmlib.define_2_1 import model as DEFINE
 import define_object
 
-""" Note: Dictionaries have not yet been implemented in the template """
 class Concepts(define_object.DefineObject):
     """ create a Define-XML v2.1 ExternalCodeList element template """
     def __init__(self):
@@ -11,7 +10,7 @@ class Concepts(define_object.DefineObject):
         """
         parse the define-template and create odmlib define_objects to return in the define_objects dictionary
         :param template: define-template dictionary section
-        :param define_objects: dictionary of odmlib define_objects updated by this method
+        :param objects: dictionary of odmlib define_objects updated by this method
         :param lang: xml:lang setting for TranslatedText
         :param acrf: part of the common interface but not used by this class
         """
@@ -21,7 +20,8 @@ class Concepts(define_object.DefineObject):
             cl = self._create_concept_object(cl_oid, concept)
             objects["CodeList"].append(cl)
 
-    def _create_concept_object(self, cl_oid, codelist):
+    @staticmethod
+    def _create_concept_object(cl_oid, codelist):
         """
         using the row from the Dictionaries worksheet create an odmlib CodeList template and add ExternalCodeList
         :param codelist: dictionary with contents the Dictionaries template section

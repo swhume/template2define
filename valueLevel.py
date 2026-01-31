@@ -1,6 +1,7 @@
 from odmlib.define_2_1 import model as DEFINE
 import define_object
 import whereClauses as WC
+import items
 
 # TODO
 """
@@ -18,27 +19,46 @@ class ValueLevel(define_object.DefineObject):
         self.vld = None
 
     # def create_define_objects(self, template, define_objects, oid, item_oids, lang, acrf):
-    def create_define_objects(self, template, define_objects, lang, acrf):
+    def create_define_objects(self, slice, define_objects, lang, acrf):
         """
         parse the define-template and create a odmlib define_objects to return in the define_objects dictionary
+                    {
+                      "OID": "IT.VS.VSORRES.TEMP",
+                      "mandatory": false,
+                      "name": "VSORRES",
+                      "dataType": "float",
+                      "applicableWhen": [
+                        "WC.VS.df8e6ed8"
+                      ],
+                      "displayFormat": "8.3",
+                      "significantDigits": 3,
+                      "origin": {
+                        "type": "Collected",
+                        "source": "Investigator"
+                      }
+                    },
         """
         self.lang = lang
         self.acrf = acrf
-        domain = template["domain"]
-        for item in template["items"]:
-            vld_oid = "VL." + domain.upper() + "." + item["variable"]
-            vld_obj = self._get_vld(vld_oid, define_objects)
-            if vld_obj is None:
-                vld_obj = self._create_valuelistdef_object(vld_oid, define_objects)
-                define_objects["ValueListDef"].append(vld_obj)
+        # create ValueListDef
+        vld_obj = self._create_valuelistdef_object(slice["OID"], define_objects)
+        define_objects["ValueListDef"].append(vld_obj)
+
+        # create ItemRefs in ValueListDef
+        for item in slice["items"]:
             itr = self._create_itemref_object(vld_obj, item)
             vld_obj.ItemRef.append(itr)
+
+        # create ItemDefs referenced by ValueListDef ItemRefs
+        itd = items.Items()
+        itd.create_define_objects(slice["items"], define_objects, lang, acrf)
 
     def _create_whereclause_object(self, object, define_objects, wc, wc_oid, dataset):
         where_clause = WC.WhereClauses()
         where_clause.create_define_objects(object, define_objects, wc, wc_oid, dataset, self.lang, self.acrf)
 
-    def _get_vld(self, vld_oid, define_objects):
+
+    def _get_vld(self, vld_oid, item, define_objects):
         for vld in define_objects["ValueListDef"]:
             if vld.OID == vld_oid:
                 return vld
@@ -52,11 +72,15 @@ class ValueLevel(define_object.DefineObject):
         return vld
 
     def _create_itemref_object(self, vld_obj, item): #   wc, dataset, variable, it_oid):
-        attr = {"ItemOID": item["itemOID"], "Mandatory": item["mandatory"]}
+        attr = {"ItemOID": item["OID"]}
         if item.get("order"):
             attr["Order"] = item["order"]
         if item.get("method"):
             attr["MethodOID"] = item["method"]
+        if item.get("mandatory", False):
+            attr["Mandatory"] = "Yes"
+        else:
+            attr["Mandatory"] = "No"
         ir = DEFINE.ItemRef(**attr)
         # TODO determine how to process when there are multiple applicableWhen values
         wc = DEFINE.WhereClauseRef(WhereClauseOID=item["applicableWhen"][0])

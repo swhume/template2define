@@ -18,7 +18,8 @@ class Study(define_object.DefineObject):
         define_objects["Study"] = self._create_study_object(template)
         define_objects["MetaDataVersion"] = self._create_metadataversion_object(template)
 
-    def _create_study_object(self, study_dict):
+    @staticmethod
+    def _create_study_object(study_dict):
         """
         create the study ODMLIB template from the Study template and return it
         :param study_dict: dictionary created from the define-template study section
@@ -44,13 +45,3 @@ class Study(define_object.DefineObject):
         mdv = DEFINE.MetaDataVersion(OID=mdv_oid, Name="MDV " + study_dict["studyName"],
                                      Description=f"Data Definitions for {study_dict['studyName']}", DefineVersion="2.1.0")
         return mdv
-
-    # def _load_metadata(self, key, value):
-    #     """
-    #     load the Study define-template content and return a dictionary
-    #     :param key: index indicating the dictionary value to load
-    #     :return: the value to load into the metadata dictionary
-    #     """
-    #     metadata = {}
-    #     metadata[key] = value
-    #     return metadata

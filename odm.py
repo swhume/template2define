@@ -15,6 +15,7 @@ class ODM:
                  "CreationDateTime": self._set_datetime(), "ODMVersion": "1.3.2", "FileType": "Snapshot",
                  "Originator": "360i Define-XML Team", "SourceSystem": "odmlib", "SourceSystemVersion": "0.2", "Context": "Other"}
 
-    def _set_datetime(self):
+    @staticmethod
+    def _set_datetime():
         """return the current datetime in ISO 8601 format"""
         return datetime.datetime.utcnow().replace(tzinfo=datetime.timezone.utc).isoformat()

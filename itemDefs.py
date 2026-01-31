@@ -1,7 +1,12 @@
 from odmlib.define_2_1 import model as DEFINE
 import define_object
 import valueLevel as VL
+import logging
+logger = logging.getLogger(__name__)
 
+"""
+DEPRECATED - itemDefs.py has been replaced by items.py due to DDS model changes
+"""
 
 class Items(define_object.DefineObject):
     """ create a Define-XML v2.1 ItemDef element objects """
@@ -13,6 +18,7 @@ class Items(define_object.DefineObject):
         self.vlm_oids = []
 
     def create_define_objects(self, template, define_objects, item_group, lang, acrf):
+        logger.info(f"itemDefs is deprecated...")
         self.lang = lang
         self.acrf = acrf
         item_oids = []

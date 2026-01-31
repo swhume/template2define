@@ -1,6 +1,7 @@
 from odmlib.define_2_1 import model as DEFINE
 import define_object
 import itemRefs
+import items
 import valueLevel as VL
 
 
@@ -12,28 +13,37 @@ class ItemGroups(define_object.DefineObject):
     def create_define_objects(self, template, define_objects, lang, acrf):
         """
         parse each row in the Excel template and create odmlib define_objects to return in the define_objects dictionary
-        :param template: dataset section of the define-template
+        :param template: dataset section of the DDS template
         :param define_objects: dictionary of odmlib define_objects updated by this method
         :param lang: xml:lang setting for TranslatedText
         :param acrf: annotated case report form document
         """
+        define_objects["ItemDef"] = []
+
         self.lang = lang
         for dataset in template:
-            if dataset.get("type", "Dataset") == "DataSpecialization":
+            self._generate_dataset(dataset, define_objects, lang, acrf)
+            if dataset.get("slices"):
                 self._generate_vlm(dataset, define_objects, lang, acrf)
-            else:
-                self._generate_dataset(dataset, define_objects, lang, acrf)
 
 
     def _generate_vlm(self, dataset, define_objects, lang, acrf):
-        vlm = VL.ValueLevel()
-        vlm.create_define_objects(dataset, define_objects, lang, acrf)
+        for slice in dataset["slices"]:
+            if slice["type"] == "ValueList":
+                vlm = VL.ValueLevel()
+                vlm.create_define_objects(slice, define_objects, lang, acrf)
 
     def _generate_dataset(self, dataset, define_objects, lang, acrf):
         itg = self._create_itemgroupdef_object(dataset)
         define_objects["ItemGroupDef"].append(itg)
+        # ItemRefs
         vars = itemRefs.ItemRefs()
         vars.create_define_objects(dataset["items"], define_objects, lang, acrf, item_group=itg)
+        # ItemDefs
+        itd = items.Items()
+        itd.create_define_objects(dataset["items"], define_objects, lang, acrf)
+
+        # TODO review this assumption that we have 1 class per dataset
         # assumption: 1 class per dataset - many need to expand this for ADaM
         if dataset.get("class"):
             ds_class = dataset["class"].upper().replace("-", " ")
@@ -62,15 +72,15 @@ class ItemGroups(define_object.DefineObject):
         if obj.get("purpose"):
             attr["Purpose"] = obj["purpose"]
         else:
+            # defaults to Tabulation
             attr["Purpose"] = "Tabulation"
 
         if obj.get("comment"):
             attr["CommentOID"] = obj["comment"]
         if obj.get("isNonStandard"):
             attr["IsNonStandard"] = obj["isNonStandard"]
-        # TODO derive this
-        if obj.get("standardOID"):
-            attr["StandardOID"] = obj["standardOID"]
+        if obj.get("wasDerivedFrom"):
+            attr["StandardOID"] = obj["wasDerivedFrom"]
         if obj.get("hasNoData"):
             attr["HasNoData"] = obj["hasNoData"]
         igd = DEFINE.ItemGroupDef(**attr)

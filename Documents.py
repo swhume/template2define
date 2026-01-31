@@ -1,5 +1,7 @@
 from odmlib.define_2_1 import model as DEFINE
 import define_object
+import logging
+logger = logging.getLogger(__name__)
 
 """ Note: Documents have not yet been implemented in the template """
 class Documents(define_object.DefineObject):
@@ -15,6 +17,7 @@ class Documents(define_object.DefineObject):
         :param lang: xml:lang setting for TranslatedText
         :param acrf: part of the common interface but not used by this class
         """
+        logger.info("in Documents...")
         self.lang = lang
         define_objects["leaf"] = []
         for doc in template:
