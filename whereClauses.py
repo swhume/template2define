@@ -16,8 +16,6 @@ class WhereClauses(define_object.DefineObject):
         parse the Excel template and create a odmlib define_objects to return in the define_objects dictionary
         :param template: content from the define-template
         :param define_objects: dictionary of odmlib define_objects updated by this method
-        :param wc: WhereClause content from the define-template
-        :param wc_oid: unique identifier for the WhereClause
         :param lang: xml:lang setting for TranslatedText
         :param acrf: part of the common interface but not used by this class
         """
@@ -43,7 +41,8 @@ class WhereClauses(define_object.DefineObject):
                 where_clause.RangeCheck.append(rc)
         return where_clause
 
-    def _get_range_checks(self, range_checks, condition_oid):
+    @staticmethod
+    def _get_range_checks(range_checks, condition_oid):
         for rc in range_checks:
             oid = list(rc.keys())[0]
             if oid == condition_oid:

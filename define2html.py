@@ -1,8 +1,5 @@
 import argparse
-
 from lxml import etree
-from pathlib import Path
-
 
 def transform_xml(xml_path, xsl_path, output_path):
     """

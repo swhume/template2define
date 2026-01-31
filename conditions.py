@@ -3,14 +3,12 @@ import json
 from odmlib.define_2_1 import model as DEFINE
 import define_object
 
-
 class Conditions(define_object.DefineObject):
     """ create a Define-XML v2.1 WhereClauseDef element objects """
     def __init__(self):
         super().__init__()
         self.wc_stash_file = Path(__file__).parent.joinpath("wc_stash.json")
 
-    # def create_define_objects(self, template, define_objects, wc, wc_oid, dataset, lang, acrf):
     def create_define_objects(self, template, define_objects, lang, acrf):
         """
         parse the Excel template and create a odmlib define_objects to return in the define_objects dictionary
@@ -28,8 +26,9 @@ class Conditions(define_object.DefineObject):
         with open(self.wc_stash_file, 'w') as f:
             json.dump(conditions, f, indent=4)
 
-    def _create_condition(self, condition):
-        condition_obj = {"OID": condition["OID"], "Name": condition["name"]}
+    @staticmethod
+    def _create_condition(condition):
+        condition_obj = {"OID": condition["OID"]}
         range_checks = []
         for rc in condition["rangeChecks"]:
             rc_attr = {"SoftHard": "Soft", "ItemOID": rc["item"], "Comparator": rc["comparator"]}
@@ -43,8 +42,9 @@ class Conditions(define_object.DefineObject):
 
     def _create_rangecheck(self, wc, dataset):
         """
-        use the values from the WhereClauses worksheet to create a RangeCheck odmlinb template
-        :param row: WhereClauses worksheet row values as a dictionary
+        use the values from the WhereClauses worksheet to create a RangeCheck odmlib template
+        :param wc: WhereClause
+        :param dataset: dataset object
         :return: a RangeCheck odmlib template
         """
         item_oid = self.generate_oid(["IT", dataset, wc["Variable"]])

@@ -11,55 +11,34 @@ class CodeLists(define_object.DefineObject):
     def create_define_objects(self, object, define_objects, lang, acrf):
         """
         parse the define-template dictionary and create odmlib define_objects to return in the define_objects dictionary
-        :param object: code list section of the define-template metadata
+        :param object: code list section of the DDS template metadata
         :param define_objects: dictionary of odmlib define_objects updated by this method
         :param lang: xml:lang setting for TranslatedText
         :param acrf: part of the common interface but not used by this class
         """
         self.lang = lang
         define_objects["CodeList"] = []
-        is_decode_item = False
-        # cl_oids = []
         for cl in object:
-            # TODO template has OID for itemGroups and oid for codeLists - should be consistent
-            oid = cl["OID"]
             # TODO template missing the NCI c-codes for codelists and terms
             cl_defn = self._create_codelist_object(cl)
             cl_c_code = cl.get("nciCodelistCode")
-            # if oid not in cl_oids:
-            #     # assumes when this is a new code list the names will not be the same
-            #     cl_defn = self._create_codelist_object(cl)
-            #     cl_c_code = cl.get("NCI Codelist Code")
-            #     is_first_term = True
-            for term in cl["items"]:
-            #         # assumption: if the first term has a decode element then create the list with decodes
-            #         # if is_first_term:
-            #         #     if term["Decoded Value"]:
-            #         #         is_decode_item = True
-            #         #     else:
-            #         #         is_decode_item = False
-            #         #     is_first_term = False
-            #         # if is_decode_item:
-            #         cl_item = self._create_codelistitem_object(term)
-            #         cl_defn.CodeListItem.append(cl_item)
-            #         # else:
-            #         #     en_item = self._create_enumerateditem_object(term)
-            #         #     cl_defn.EnumeratedItem.append(en_item)
-            #         cl_oids.append(oid)
+            for term in cl["codeListItems"]:
                 cl_item = self._create_codelistitem_object(term)
                 cl_defn.CodeListItem.append(cl_item)
             # TODO no indicator that a codelist is a dictionary with an external codelist reference
-            if len(cl["items"]) == 0:
+            if len(cl["codeListItems"]) == 0:
                 self._create_external_code_list(cl_defn, cl)
             self._add_codelist_to_objects(cl_c_code, cl_defn, define_objects)
 
-    def _create_external_code_list(self, cl, obj):
+    @staticmethod
+    def _create_external_code_list(cl, obj):
         # TODO temp to create the external codelist content
         attr = {"Dictionary": obj["name"], "Version": "1.0", "href": "https://www.iso.org"}
         exd = DEFINE.ExternalCodeList(**attr)
         cl.ExternalCodeList = exd
 
-    def _add_codelist_to_objects(self, cl_c_code, cl, objects):
+    @staticmethod
+    def _add_codelist_to_objects(cl_c_code, cl, objects):
         if cl_c_code:
             alias = DEFINE.Alias(Context="nci:ExtCodeID", Name=cl_c_code)
             cl.Alias.append(alias)
@@ -67,7 +46,8 @@ class CodeLists(define_object.DefineObject):
         if cl:
             objects["CodeList"].append(cl)
 
-    def _create_codelist_object(self, obj):
+    @staticmethod
+    def _create_codelist_object(obj):
         data_type = obj.get("dataType", "text")
         attr = {"OID": obj["OID"], "Name": obj["name"], "DataType": data_type}
         if obj.get("comment"):
@@ -79,7 +59,8 @@ class CodeLists(define_object.DefineObject):
         cl = DEFINE.CodeList(**attr)
         return cl
 
-    def _create_enumerateditem_object(self, obj):
+    @staticmethod
+    def _create_enumerateditem_object(obj):
         attr = {"CodedValue": obj["Term"]}
         if obj.get("Order"):
             attr["OrderNumber"] = obj["Order"]
@@ -89,13 +70,14 @@ class CodeLists(define_object.DefineObject):
             en_item.Alias.append(alias)
         return en_item
 
-    def _create_codelistitem_object(self, obj):
+    @staticmethod
+    def _create_codelistitem_object(obj):
         attr = {"CodedValue": obj["codedValue"]}
         if obj.get("order"):
             attr["OrderNumber"] = obj["order"]
         cl_item = DEFINE.CodeListItem(**attr)
         decode = DEFINE.Decode()
-        if obj["decode"]:
+        if obj.get("decode", None):
             tt = DEFINE.TranslatedText(_content=obj["decode"], lang="en")
         else:
             # assumption: if no decode for this term the use the submission value

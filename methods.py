@@ -1,5 +1,7 @@
 from odmlib.define_2_1 import model as DEFINE
 import define_object
+import logging
+logger = logging.getLogger(__name__)
 
 
 """ Note: Methods have not yet been implemented in the template """
@@ -16,6 +18,7 @@ class Methods(define_object.DefineObject):
         :param lang: xml:lang setting for TranslatedText
         :param acrf: part of the common interface but not used by this class
         """
+        logger.info(f"in methods...")
         self.lang = lang
         define_objects["MethodDef"] = []
         for method in template:

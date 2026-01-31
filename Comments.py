@@ -1,5 +1,7 @@
 from odmlib.define_2_1 import model as DEFINE
 import define_object
+import logging
+logger = logging.getLogger(__name__)
 
 """ Note: Comments have not yet been implemented in the template """
 class Comments(define_object.DefineObject):
@@ -16,6 +18,7 @@ class Comments(define_object.DefineObject):
         :param define_objects: dictionary of odmlib define_objects updated by this method
         :param lang: xml:lang setting for TranslatedText
         """
+        logger.info(f"in Comments...")
         self.lang = lang
         define_objects["CommentDef"] = []
         for comment in template:
@@ -38,12 +41,12 @@ class Comments(define_object.DefineObject):
             self._add_document(comment, com)
         return com
 
-    def _add_document(self, comment, com):
+    @staticmethod
+    def _add_document(comment, com):
         """
         creates a DocumentRef template using a row from the Comments Worksheet
         :param comment: comment section of the define-template
         :param com: define comment template
-        :param method: odmlib CommentDef template that gets updated with a DocumentRef template
         """
         dr = DEFINE.DocumentRef(leafID=comment["Document"])
         if comment.get("Pages"):

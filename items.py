@@ -1,7 +1,5 @@
 from odmlib.define_2_1 import model as DEFINE
 import define_object
-# import ValueLevel as VL
-
 
 class Items(define_object.DefineObject):
     """ create a Define-XML v2.1 ItemDef element objects """
@@ -12,15 +10,13 @@ class Items(define_object.DefineObject):
         self.item_def_oids = []
         self.vlm_oids = []
 
-    def create_define_objects(self, template, define_objects, lang, acrf, item_group=None):
+    def create_define_objects(self, template, define_objects, lang, acrf):
         self.lang = lang
         self.acrf = acrf
-        define_objects["ItemDef"] = []
         for variable in template:
             it_oid = variable["OID"]
             item = self._create_itemdef_object(variable, it_oid)
             define_objects["ItemDef"].append(item)
-        self._create_leaf_objects(define_objects)
 
     def _create_itemdef_object(self, obj,  oid):
         attr = {"OID": oid, "Name": obj["name"], "DataType": obj["dataType"], "SASFieldName": obj["name"]}
@@ -39,7 +35,7 @@ class Items(define_object.DefineObject):
         """
         # TODO do not find codeList in define.json example for items
         if obj.get("codeList"):
-            cl_oid = self.generate_oid(["CL", obj["codeList"][0]])
+            cl_oid = self.generate_oid(["CL", obj["codeList"].split(".")[1]])
             cl = DEFINE.CodeListRef(CodeListOID=cl_oid)
             item.CodeListRef = cl
         # TODO do not find origin content in define.json example for items (nice to have that information)
@@ -58,12 +54,9 @@ class Items(define_object.DefineObject):
                 dr = DEFINE.DocumentRef(leafID=self.acrf)
                 dr.PDFPageRef.append(DEFINE.PDFPageRef(PageRefs=obj["Pages"], Type="PhysicalRef"))
                 item.Origin[0].DocumentRef.append(dr)
-        # TODO do not find VLM reference in define.json example for items (nice to have that information)
-        # if obj.get("VLM"):
-        #     vl = DEFINE.ValueListRef(ValueListOID=vl_oid)
-        #     item.ValueListRef = vl
 
-    def _add_optional_itemdef_attributes(self, attr, obj):
+    @staticmethod
+    def _add_optional_itemdef_attributes(attr, obj):
         """
         use the values from the Variables section in the define-template to add the optional attributes to the ItemDef
         """
@@ -76,22 +69,4 @@ class Items(define_object.DefineObject):
             attr["DisplayFormat"] = obj["format"]
         if obj.get("comment"):
             attr["CommentOID"] = obj["comment"]
-
-    def _create_leaf_objects(self, define_objects):
-        """
-        each ItemGroupDef template in define_objects is updated to add a leaf template
-        :param define_objects: dictionary of odmlib define_objects updated by this method
-        """
-        # TODO temp
-        # for igd in define_objects["ItemGroupDef"]:
-        #     # move Class to the end of the OrderedDict before adding leaf
-        #     igd_class = igd.__dict__.pop("Class")
-        #     igd.Class = igd_class
-        #     id = self.generate_oid(["LF", igd.Name])
-        #     xpt_name = igd.Name + ".xpt"
-        #     leaf = DEFINE.leaf(ID=id, href=xpt_name.lower())
-        #     title = DEFINE.title(_content=xpt_name.lower())
-        #     leaf.title = title
-        #     igd.leaf = leaf
-        pass
 

@@ -1,5 +1,7 @@
 from odmlib.define_2_1 import model as DEFINE
 import define_object
+import logging
+logger = logging.getLogger(__name__)
 
 class AnnotatedCRF(define_object.DefineObject):
     """ create a Define-XML v2.1 leaf element template """
@@ -14,6 +16,7 @@ class AnnotatedCRF(define_object.DefineObject):
         :param lang: xml:lang setting for TranslatedText
         :param acrf: part of the common interface but not used by this class
         """
+        logger.info(f"in annotatedCRF...")
         self.lang = lang
         define_objects["AnnotatedCRF"] = []
         define_objects["leaf"] = []
@@ -23,7 +26,8 @@ class AnnotatedCRF(define_object.DefineObject):
             leaf = self._create_leaf_object(doc)
             define_objects["leaf"].append(leaf)
 
-    def _create_acrf_object(self, doc):
+    @staticmethod
+    def _create_acrf_object(doc):
         """
         use the values from the Documents section of the template to create a leaf odmlib template
         :param doc: define-template metadata dictionary
@@ -34,7 +38,8 @@ class AnnotatedCRF(define_object.DefineObject):
         acrf.DocumentRef = doc_ref
         return acrf
 
-    def _create_leaf_object(self, doc):
+    @staticmethod
+    def _create_leaf_object(doc):
         """
         use the values from the Documents section of the template to create a leaf odmlib template
         :param doc: define-template metadata dictionary
@@ -42,7 +47,6 @@ class AnnotatedCRF(define_object.DefineObject):
         """
         href = doc.get("href", "acrf.pdf")
         id = "LF.acrf"
-        # lf = DEFINE.leaf(ID=doc["leafID"], href=href)
         # TODO how generate the ID correctly?
         lf = DEFINE.leaf(ID=id, href=href)
         title = DEFINE.title(_content=doc["title"])

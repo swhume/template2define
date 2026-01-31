@@ -1,5 +1,6 @@
 import argparse
 import json
+import logging
 from pathlib import Path
 import odm as ODM
 import supporting_docs as SD
@@ -11,7 +12,7 @@ import whereClauses, codeLists, Dictionaries, methods, Comments, Documents, valu
 ELEMENTS = ["ValueListDef", "WhereClauseDef", "ItemGroupDef", "ItemDef", "CodeList", "MethodDef", "CommentDef", "leaf"]
 
 """
-template2define2-1.py - convert a define-360i.json file into a Define-XML v2.1 file.
+define_generator.py - convert a define-360i-2026-01-01.json file into a Define-XML v2.1 file.
 Example Cmd-line Args:
     example: -t ./data/define-360i.json -d ./data/define-360i.xml
 
@@ -24,17 +25,32 @@ xmllint --format ./data/define-360i.xml | less
 
 # TODO template comments
 # "asOfDateTime": null - should exclude attributes with null values
+# need a valuelist attribute on items with associated ValueListDefs so I can assign the ValueListRef
+# need a wasDerivedFrom attribute on a codelist like we have on an itemGroup so I can assign the CT standard used
+"""
+logging.debug("Debug message: for troubleshooting and deep info")
+logging.info("Info message: normal operation information")
+logging.warning("Warning message: something looks off")
+logging.error("Error message: an issue occurred")
+logging.critical("Critical message: major failure")
+"""
 
-class Template2Define:
-    """ Generate a Define-XML v2.1 file from the define-template.json file. """
-    def __init__(self, template_file, define_file, is_verbose=False):
+
+class DefineGenerator:
+    """ Generate a Define-XML v2.1 file from the DDS JSON file. """
+    def __init__(self, dds_file, define_file, log_level="INFO"):
         """
-        :param template_file: str - the path and filename for the define template file
-        :param define_file: str - the path and filename for the Define-XML v2.1 file to be generated
+        :param dds_file: str - the Data Definition Specification (DDS) path and filename
+        :param define_file: str - the Define-XML v2.1 path and filename
+        :param log_level: str - sets the logging level
         """
-        self.template_file = template_file
+        self.dds_file = dds_file
         self.define_file = define_file
-        self.is_verbose = is_verbose
+        logging.basicConfig(
+            filename="define_generator.log",
+            level=getattr(logging, log_level),
+            format="%(asctime)s - %(levelname)s - %(message)s",
+        )
         self._check_file_existence()
         self.lang = "en"
         self.acrf = "LF.acrf"
@@ -45,13 +61,13 @@ class Template2Define:
         """
         public method to create the Define-XML v2.1 file from the template input file
         """
-        with open(self.template_file, 'r') as f:
+        with open(self.dds_file, 'r') as f:
             template_objects = json.load(f)
         self._init_define_objects()
         self._load_study(template_objects)
         for section, object in template_objects.items():
             if type(object) is list:
-                print(section)
+                logging.info(f"processing {section}")
                 self._load(section, object)
             else:
                 self.define_attributes[section] = object
@@ -111,7 +127,7 @@ class Template2Define:
 
     def _check_file_existence(self):
         """ throw an error if the Excel input file cannot be found """
-        if not os.path.isfile(self.template_file):
+        if not os.path.isfile(self.dds_file):
             raise ValueError("The template file specified on the command-line cannot be found.")
 
 def validate_defile_file(define_file):
@@ -119,9 +135,9 @@ def validate_defile_file(define_file):
     try:
         validator.validate_define_file()
     except DefineSchemaValidationError as e:
-        print(f"Define-XML schema validation errors: {e}")
+        logging.info(f"Define-XML schema validation errors: {e}")
     else:
-        print("Define-XML file is valid.")
+        logging.info("Define-XML file is valid.")
 
 def set_cmd_line_args():
     """
@@ -132,9 +148,11 @@ def set_cmd_line_args():
     parser.add_argument("-d", "--define", help="path and file name of Define-XML v2 file to create", required=False,
                         dest="define_file", default="./data/define-360i.xml")
     parser.add_argument("-t", "--template", help="path and file name of the template file to load", required=True,
-                        dest="template_file", )
-    parser.add_argument("-v", "--verbose", help="turn on verbose processing", default=False, const=True,
-                        nargs='?', dest="is_verbose")
+                        dest="dds_file", )
+    parser.add_argument("-l", "--log-level", default="INFO",
+        choices=["DEBUG", "INFO", "WARNING", "ERROR", "CRITICAL"],
+        help="Set the logging level (default: INFO)",
+    )
     parser.add_argument("-s", "--validate", help="schema validate the define.xml", default=False, const=True,
                         nargs='?', dest="is_validate")
     args = parser.parse_args()
@@ -142,10 +160,10 @@ def set_cmd_line_args():
 
 
 def main():
-    """ The main driver method that generates Define-XML v2.1 file from the define-template.json metadata file """
+    """ The main driver method that generates Define-XML v2.1 file from the DDS template metadata file """
     args = set_cmd_line_args()
-    x2d = Template2Define(template_file=args.template_file, define_file=args.define_file, is_verbose=args.is_verbose)
-    x2d.create()
+    dg = DefineGenerator(dds_file=args.dds_file, define_file=args.define_file, log_level=args.log_level)
+    dg.create()
     if args.is_validate:
         validate_defile_file(args.define_file)
 
