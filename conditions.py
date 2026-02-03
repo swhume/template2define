@@ -1,5 +1,3 @@
-from pathlib import Path
-import json
 from odmlib.define_2_1 import model as DEFINE
 import define_object
 
@@ -7,11 +5,10 @@ class Conditions(define_object.DefineObject):
     """ create a Define-XML v2.1 WhereClauseDef element objects """
     def __init__(self):
         super().__init__()
-        self.wc_stash_file = Path(__file__).parent.joinpath("wc_stash.json")
 
     def create_define_objects(self, template, define_objects, lang, acrf):
         """
-        parse the Excel template and create a odmlib define_objects to return in the define_objects dictionary
+        parse the DDS template and create condition objects for use by WhereClauseDef generation
         :param template: content from the define-template
         :param define_objects: dictionary of odmlib define_objects updated by this method
         :param lang: xml:lang setting for TranslatedText
@@ -19,12 +16,12 @@ class Conditions(define_object.DefineObject):
         """
         self.lang = lang
         conditions = []
-        # stash the conditions created for use when generating WhereClauseDef
+        # store the conditions in define_objects for use when generating WhereClauseDef
         for condition in template:
             rc = self._create_condition(condition)
             conditions.append({rc["OID"]: rc})
-        with open(self.wc_stash_file, 'w') as f:
-            json.dump(conditions, f, indent=4)
+        # store in define_objects with underscore prefix to indicate internal use
+        define_objects["_conditions"] = conditions
 
     @staticmethod
     def _create_condition(condition):
@@ -42,9 +39,9 @@ class Conditions(define_object.DefineObject):
 
     def _create_rangecheck(self, wc, dataset):
         """
-        use the values from the WhereClauses worksheet to create a RangeCheck odmlib template
-        :param wc: WhereClause
-        :param dataset: dataset object
+        use the values from the conditions section of the DDS JSON to create a RangeCheck odmlib template
+        :param wc: WhereClause dictionary from the DDS JSON
+        :param dataset: dataset name
         :return: a RangeCheck odmlib template
         """
         item_oid = self.generate_oid(["IT", dataset, wc["Variable"]])

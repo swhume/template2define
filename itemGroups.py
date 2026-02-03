@@ -1,8 +1,10 @@
+from typing import Any
 from odmlib.define_2_1 import model as DEFINE
 import define_object
 import itemRefs
 import items
 import valueLevel as VL
+from constants import TRIAL_DESIGN_DOMAINS, NON_REPEATING_DOMAINS, DEFAULT_PURPOSE
 
 
 class ItemGroups(define_object.DefineObject):
@@ -10,13 +12,20 @@ class ItemGroups(define_object.DefineObject):
     def __init__(self):
         super().__init__()
 
-    def create_define_objects(self, template, define_objects, lang, acrf):
+    def create_define_objects(
+        self,
+        template: list[dict[str, Any]],
+        define_objects: dict[str, list[Any]],
+        lang: str,
+        acrf: str
+    ) -> None:
         """
-        parse each row in the Excel template and create odmlib define_objects to return in the define_objects dictionary
-        :param template: dataset section of the DDS template
-        :param define_objects: dictionary of odmlib define_objects updated by this method
+        Create ItemGroupDef objects from the DDS template.
+
+        :param template: list of dataset definitions from the DDS JSON
+        :param define_objects: dictionary of odmlib objects updated by this method
         :param lang: xml:lang setting for TranslatedText
-        :param acrf: annotated case report form document
+        :param acrf: annotated case report form leaf ID
         """
         define_objects["ItemDef"] = []
 
@@ -38,7 +47,9 @@ class ItemGroups(define_object.DefineObject):
         define_objects["ItemGroupDef"].append(itg)
         # ItemRefs
         vars = itemRefs.ItemRefs()
-        vars.create_define_objects(dataset["items"], define_objects, lang, acrf, item_group=itg)
+        dataset_name = dataset.get("name", "unknown")
+        items_list = self.require_key(dataset, "items", f"ItemGroupDef {dataset_name}")
+        vars.create_define_objects(items_list, define_objects, lang, acrf, item_group=itg)
         # ItemDefs
         itd = items.Items()
         itd.create_define_objects(dataset["items"], define_objects, lang, acrf)
@@ -50,8 +61,9 @@ class ItemGroups(define_object.DefineObject):
             itg.Class = DEFINE.Class(Name=ds_class)
 
     def _create_itemgroupdef_object(self, obj):
-        oid = self.generate_oid(["IG", obj["name"]])
-        attr = {"OID": oid, "Name": obj["name"], "Domain": obj["name"]}
+        name = self.require_key(obj, "name", "ItemGroupDef")
+        oid = self.generate_oid(["IG", name])
+        attr = {"OID": oid, "Name": name, "Domain": name}
         if obj.get("archiveLocationID"):
             attr["ArchiveLocationID"] = ".".join(["LF", obj["archiveLocationID"]])
         attr["Structure"] = obj.get("structure", "NA")
@@ -72,8 +84,7 @@ class ItemGroups(define_object.DefineObject):
         if obj.get("purpose"):
             attr["Purpose"] = obj["purpose"]
         else:
-            # defaults to Tabulation
-            attr["Purpose"] = "Tabulation"
+            attr["Purpose"] = DEFAULT_PURPOSE
 
         if obj.get("comment"):
             attr["CommentOID"] = obj["comment"]
@@ -84,32 +95,35 @@ class ItemGroups(define_object.DefineObject):
         if obj.get("hasNoData"):
             attr["HasNoData"] = obj["hasNoData"]
         igd = DEFINE.ItemGroupDef(**attr)
-        tt = DEFINE.TranslatedText(_content=obj["description"], lang=self.lang)
+        description = self.require_key(obj, "description", f"ItemGroupDef {name}")
+        tt = DEFINE.TranslatedText(_content=description, lang=self.lang)
         igd.Description = DEFINE.Description()
         igd.Description.TranslatedText.append(tt)
         return igd
 
-    def _generate_is_reference(self, attributes):
+    def _generate_is_reference(self, attributes: dict[str, str]) -> str:
         """
-        if the dataset is a trial design dataset, then IsReferenceData = "Yes"
-        :param attributes:
-        :return: str: "Yes" or "No"
-        """
-        if attributes["Domain"] in ["TA", "TD", "TE", "TI", "TM", "TS", "TV"]:
-            return "Yes"
-        else:
-            return "No"
+        Determine if the dataset is a reference dataset (trial design domains).
 
-    def _generate_repeating_value(self, attributes) -> str:
+        :param attributes: ItemGroupDef attributes dictionary
+        :return: "Yes" if domain is a reference domain, "No" otherwise
+        """
+        if attributes["Domain"] in TRIAL_DESIGN_DOMAINS:
+            return "Yes"
+        return "No"
+
+    def _generate_repeating_value(self, attributes: dict[str, str]) -> str:
+        """
+        Determine if the dataset has repeating records.
+
+        :param attributes: ItemGroupDef attributes dictionary
+        :return: "Yes" if dataset has repeating records, "No" otherwise
+        """
         if attributes["IsReferenceData"] == "Yes":
-            repeating = "No"
-        elif attributes["Domain"] in ["DM", "APDM", "ADSL"]:
-            repeating = "No"
-        elif attributes["Domain"] in ["DI", "OI"]:
-            # TODO check for presence of -PARMCD
-            repeating = "No"
-        elif attributes["Structure"] != "NA" and attributes["Structure"].count("per") == 1:
-            repeating = "No"
-        else:
-            repeating = "Yes"
-        return repeating
+            return "No"
+        if attributes["Domain"] in NON_REPEATING_DOMAINS:
+            # TODO check for presence of -PARMCD for DI/OI domains
+            return "No"
+        if attributes["Structure"] != "NA" and attributes["Structure"].count("per") == 1:
+            return "No"
+        return "Yes"

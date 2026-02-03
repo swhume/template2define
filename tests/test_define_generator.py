@@ -4,6 +4,7 @@ Integration tests for the Define-XML generator.
 These tests verify that the generator can process sample DDS JSON files
 and produce valid Define-XML output.
 """
+import json
 import os
 import pytest
 import xml.etree.ElementTree as ET
@@ -34,7 +35,9 @@ class TestDefineGeneratorImports:
         import study
         import standards
         import methods
-        import Comments
+        import comments
+        import documents
+        import dictionaries
         import valueLevel
         assert True  # If we get here, all imports succeeded
 
@@ -214,3 +217,99 @@ class TestDefineGeneratorIdempotency:
 
         # Sizes should be identical or very close
         assert abs(size1 - size2) < 100, f"Output sizes differ significantly: {size1} vs {size2}"
+
+
+class TestInputValidation:
+    """Tests for input validation and error handling."""
+
+    def test_malformed_json_error(self, temp_output_dir, project_root):
+        """Test that malformed JSON produces helpful error message."""
+        os.chdir(project_root)
+        from define_generator import DefineGenerator
+
+        # Create a file with invalid JSON
+        bad_json_file = temp_output_dir / "bad.json"
+        bad_json_file.write_text('{"invalid json": }')
+
+        dg = DefineGenerator(
+            dds_file=str(bad_json_file),
+            define_file=str(temp_output_dir / "output.xml"),
+            log_level="WARNING"
+        )
+
+        # The create() method should exit with sys.exit(1) on JSON error
+        with pytest.raises(SystemExit) as exc_info:
+            dg.create()
+
+        assert exc_info.value.code == 1
+
+    def test_require_key_helper(self, project_root):
+        """Test that require_key raises ValueError with helpful message for missing keys."""
+        os.chdir(project_root)
+        from define_object import DefineObject
+
+        # Create a concrete subclass for testing
+        class TestObject(DefineObject):
+            pass
+
+        obj = TestObject()
+        test_dict = {"name": "test", "value": 123}
+
+        # Test successful key retrieval
+        assert obj.require_key(test_dict, "name") == "test"
+        assert obj.require_key(test_dict, "value") == 123
+
+        # Test missing key without context
+        with pytest.raises(ValueError) as exc_info:
+            obj.require_key(test_dict, "missing_key")
+        assert "Required field 'missing_key' missing" in str(exc_info.value)
+
+        # Test missing key with context
+        with pytest.raises(ValueError) as exc_info:
+            obj.require_key(test_dict, "missing_key", "ItemDef TEST")
+        assert "Required field 'missing_key' missing in ItemDef TEST" in str(exc_info.value)
+
+    def test_missing_itemgroup_name_error(self, temp_output_dir, project_root):
+        """Test that missing ItemGroupDef name produces helpful error."""
+        os.chdir(project_root)
+        from define_generator import DefineGenerator
+
+        # Create JSON with missing 'name' in itemGroup
+        bad_data = {
+            "studyOID": "TEST.STUDY",
+            "studyName": "Test Study",
+            "studyDescription": "Test",
+            "protocolName": "TEST",
+            "metaDataVersionOID": "MDV.TEST",
+            "metaDataVersionName": "Test",
+            "metaDataVersionDescription": "Test",
+            "defineVersion": "2.1.0",
+            "itemGroups": [
+                {
+                    # Missing "name" field
+                    "description": "Test dataset",
+                    "items": []
+                }
+            ],
+            "conditions": [],
+            "whereClauses": [],
+            "codeLists": [],
+            "methods": [],
+            "standards": []
+        }
+
+        bad_json_file = temp_output_dir / "missing_name.json"
+        with open(bad_json_file, 'w') as f:
+            json.dump(bad_data, f)
+
+        dg = DefineGenerator(
+            dds_file=str(bad_json_file),
+            define_file=str(temp_output_dir / "output.xml"),
+            log_level="WARNING"
+        )
+
+        with pytest.raises(ValueError) as exc_info:
+            dg.create()
+
+        assert "name" in str(exc_info.value).lower()
+        assert "missing" in str(exc_info.value).lower()

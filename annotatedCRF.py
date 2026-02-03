@@ -1,7 +1,6 @@
 from odmlib.define_2_1 import model as DEFINE
 import define_object
-import logging
-logger = logging.getLogger(__name__)
+
 
 class AnnotatedCRF(define_object.DefineObject):
     """ create a Define-XML v2.1 leaf element template """
@@ -10,13 +9,13 @@ class AnnotatedCRF(define_object.DefineObject):
 
     def create_define_objects(self, template, define_objects, lang, acrf):
         """
-        parse the Excel template and create a odmlib define_objects to return in the define_objects dictionary
+        parse the DDS template and create odmlib define_objects to return in the define_objects dictionary
         :param template: define-template dictionary section
         :param define_objects: dictionary of odmlib define_objects updated by this method
         :param lang: xml:lang setting for TranslatedText
         :param acrf: part of the common interface but not used by this class
         """
-        logger.info(f"in annotatedCRF...")
+        self.logger.info("in annotatedCRF...")
         self.lang = lang
         define_objects["AnnotatedCRF"] = []
         define_objects["leaf"] = []

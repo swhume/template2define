@@ -1,7 +1,8 @@
 import define_object
 
 
-class Concepts(define_object.DefineObject):
+""" Note: Dictionaries have not yet been implemented in the template """
+class Dictionaries(define_object.DefineObject):
     """ create a Define-XML v2.1 ExternalCodeList element template """
     def __init__(self):
         super().__init__()
@@ -14,14 +15,15 @@ class Concepts(define_object.DefineObject):
         :param lang: xml:lang setting for TranslatedText
         :param acrf: part of the common interface but not used by this class
         """
+        self.logger.info("in Dictionaries...")
         self.lang = lang
-        for concept in template:
-            cl_oid = self.generate_oid(["CL", concept["Short Name"]])
+        for codelist in template:
+            cl_oid = self.generate_oid(["CL", codelist["Short Name"]])
             cl = self.create_external_codelist(
                 cl_oid=cl_oid,
-                name=concept["Name"],
-                data_type=concept["Data Type"],
-                dictionary=concept["Dictionary"],
-                version=concept.get("Version")
+                name=codelist["Name"],
+                data_type=codelist["Data Type"],
+                dictionary=codelist["Dictionary"],
+                version=codelist.get("Version")
             )
             objects["CodeList"].append(cl)

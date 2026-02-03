@@ -36,8 +36,8 @@ class Study(define_object.DefineObject):
 
     def _create_metadataversion_object(self, study_dict):
         """
-        create the MetaDataVersion ODMLIB template from the Study worksheet and return it
-        :param study_dict: dictionary created from the study_dict in the study worksheet
+        create the MetaDataVersion ODMLIB template from the DDS JSON and return it
+        :param study_dict: dictionary created from the study section in the DDS JSON
         :return: odmlib MetaDataVersion template
         """
         # TODO no metadata version ID

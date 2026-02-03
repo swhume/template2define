@@ -1,7 +1,6 @@
 from odmlib.define_2_1 import model as DEFINE
 import define_object
-import logging
-logger = logging.getLogger(__name__)
+
 
 """ Note: Documents have not yet been implemented in the template """
 class Documents(define_object.DefineObject):
@@ -11,13 +10,13 @@ class Documents(define_object.DefineObject):
 
     def create_define_objects(self, template, define_objects, lang, acrf):
         """
-        parse the Excel template and create a odmlib define_objects to return in the define_objects dictionary
+        parse the DDS template and create odmlib define_objects to return in the define_objects dictionary
         :param template: define-template dictionary section
         :param define_objects: dictionary of odmlib define_objects updated by this method
         :param lang: xml:lang setting for TranslatedText
         :param acrf: part of the common interface but not used by this class
         """
-        logger.info("in Documents...")
+        self.logger.info("in Documents...")
         self.lang = lang
         define_objects["leaf"] = []
         for doc in template:

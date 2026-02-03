@@ -1,25 +1,44 @@
+from typing import Any
 from odmlib.define_2_1 import model as DEFINE
 import define_object
 
-class Items(define_object.DefineObject):
-    """ create a Define-XML v2.1 ItemDef element objects """
-    def __init__(self):
-        super().__init__()
-        self.lookup_oid = None
-        self.igd = None
-        self.item_def_oids = []
-        self.vlm_oids = []
 
-    def create_define_objects(self, template, define_objects, lang, acrf):
+class Items(define_object.DefineObject):
+    """Create Define-XML v2.1 ItemDef element objects."""
+
+    def __init__(self) -> None:
+        super().__init__()
+        self.lookup_oid: str | None = None
+        self.igd: Any | None = None
+        self.item_def_oids: list[str] = []
+        self.vlm_oids: list[str] = []
+
+    def create_define_objects(
+        self,
+        template: list[dict[str, Any]],
+        define_objects: dict[str, list[Any]],
+        lang: str,
+        acrf: str
+    ) -> None:
+        """
+        Create ItemDef objects from the DDS template.
+
+        :param template: list of variable definitions from the DDS JSON
+        :param define_objects: dictionary of odmlib objects updated by this method
+        :param lang: xml:lang setting for TranslatedText
+        :param acrf: annotated case report form leaf ID
+        """
         self.lang = lang
         self.acrf = acrf
         for variable in template:
-            it_oid = variable["OID"]
+            it_oid = self.require_key(variable, "OID", "ItemDef")
             item = self._create_itemdef_object(variable, it_oid)
             define_objects["ItemDef"].append(item)
 
-    def _create_itemdef_object(self, obj,  oid):
-        attr = {"OID": oid, "Name": obj["name"], "DataType": obj["dataType"], "SASFieldName": obj["name"]}
+    def _create_itemdef_object(self, obj, oid):
+        name = self.require_key(obj, "name", f"ItemDef {oid}")
+        data_type = self.require_key(obj, "dataType", f"ItemDef {oid}")
+        attr = {"OID": oid, "Name": name, "DataType": data_type, "SASFieldName": name}
         self._add_optional_itemdef_attributes(attr, obj)
         item = DEFINE.ItemDef(**attr)
         if obj.get("description"):

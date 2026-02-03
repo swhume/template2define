@@ -1,5 +1,5 @@
-from odmlib.define_2_1 import model as DEFINE
 import define_object
+
 
 class ConceptProperties(define_object.DefineObject):
     """ create a Define-XML v2.1 ExternalCodeList element template """
@@ -17,21 +17,11 @@ class ConceptProperties(define_object.DefineObject):
         self.lang = lang
         for concept in template:
             cl_oid = self.generate_oid(["CL", concept["Short Name"]])
-            cl = self._create_concept_object(cl_oid, concept)
+            cl = self.create_external_codelist(
+                cl_oid=cl_oid,
+                name=concept["Name"],
+                data_type=concept["Data Type"],
+                dictionary=concept["Dictionary"],
+                version=concept.get("Version")
+            )
             objects["CodeList"].append(cl)
-
-    @staticmethod
-    def _create_concept_object(cl_oid, codelist):
-        """
-        using the row from the Dictionaries worksheet create an odmlib CodeList template and add ExternalCodeList
-        :param cl_oid: codelist OID
-        :param codelist: dictionary with contents the Dictionaries template section
-        :return: CodeList odmlib template with ExternalCodeList
-        """
-        cl = DEFINE.CodeList(OID=cl_oid, Name=codelist["Name"], DataType=codelist["Data Type"])
-        attr = {"Dictionary": codelist["Dictionary"]}
-        if codelist.get("Version"):
-            attr["Version"] = codelist["Version"]
-        exd = DEFINE.ExternalCodeList(**attr)
-        cl.ExternalCodeList = exd
-        return cl
