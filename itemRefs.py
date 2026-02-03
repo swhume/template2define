@@ -1,7 +1,5 @@
 from odmlib.define_2_1 import model as DEFINE
 import define_object
-import logging
-logger = logging.getLogger(__name__)
 
 
 class ItemRefs(define_object.DefineObject):
@@ -17,9 +15,11 @@ class ItemRefs(define_object.DefineObject):
         self.lang = lang
         self.acrf = acrf
         for variable in template:
-            self._create_itemref_object(variable, define_objects, item_group, variable["OID"])
+            self._create_itemref_object(variable, define_objects, item_group, variable.get("OID"))
 
     def _create_itemref_object(self, obj, define_objects, igd, it_oid):
+        if not it_oid:
+            raise ValueError("Required field OID is missing in ItemRef")
         # TODO fix as this mandatory can also be set in optional attributes
         if "mandatory" not in obj:
             mandatory = "No"
@@ -36,9 +36,9 @@ class ItemRefs(define_object.DefineObject):
     @staticmethod
     def _add_optional_itemref_attributes(attr, obj):
         """
-        use the values from the Variables worksheet row to add the optional attributes to the attr dictionary
+        use the values from the variable definition in the DDS JSON to add the optional attributes to the attr dictionary
         :param attr: ItemRef template attributes to update with optional values
-        :param row: Variables worksheet row values as a dictionary
+        :param obj: variable definition dictionary from the DDS JSON
         """
         if obj.get("method"):
             attr["MethodOID"] = obj["method"]

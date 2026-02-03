@@ -1,5 +1,3 @@
-from pathlib import Path
-import json
 from odmlib.define_2_1 import model as DEFINE
 import define_object
 
@@ -8,19 +6,18 @@ class WhereClauses(define_object.DefineObject):
     """ create a Define-XML v2.1 WhereClauseDef element objects """
     def __init__(self):
         super().__init__()
-        self.wc_stash_file = Path(__file__).parent.joinpath("wc_stash.json")
-
 
     def create_define_objects(self, template, define_objects, lang, acrf):
         """
-        parse the Excel template and create a odmlib define_objects to return in the define_objects dictionary
+        parse the DDS template and create WhereClauseDef odmlib objects
         :param template: content from the define-template
         :param define_objects: dictionary of odmlib define_objects updated by this method
         :param lang: xml:lang setting for TranslatedText
         :param acrf: part of the common interface but not used by this class
         """
         self.lang = lang
-        range_checks = self._load_wc_stash_file()
+        # read conditions from define_objects (stored by conditions.py)
+        range_checks = define_objects.get("_conditions", [])
         for wc_obj in template:
             wc = self._create_whereclausedef_object(wc_obj, range_checks)
             define_objects["WhereClauseDef"].append(wc)
@@ -48,7 +45,3 @@ class WhereClauses(define_object.DefineObject):
             if oid == condition_oid:
                 return rc
         return None
-
-    def _load_wc_stash_file(self):
-        with open(self.wc_stash_file, 'r') as f:
-            return json.load(f)
